@@ -136,7 +136,7 @@ export default function Home() {
       type: 'education',
       title: 'Master of Science in Computer Science',
       area: 'Western Michigan University',
-      location: '',
+      location: 'Chennai, India',
       period: 'Aug 2023 - June 2025',
       startDate: 'Aug 2023',
       endDate: 'June 2025',

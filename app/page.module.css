@@ -225,178 +225,399 @@
   }
 }
 
-/* Experience Section */
-.experienceSection {
-  padding-top: 5rem;
-  padding-bottom: 5rem;
+/* Journey into Tech Section - Zig-Zag Route Map */
+.journeySection {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
   position: relative;
   z-index: 10;
   background: #4338CA;
+  overflow: hidden;
 }
 
-.experienceTitle {
-  font-size: 3rem;
+.journeyTitle {
+  font-size: 2.5rem;
   font-weight: 800;
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
   color: #a5d6a7;
 }
 
 @media (min-width: 768px) {
-  .experienceTitle {
-    font-size: 3.75rem;
+  .journeyTitle {
+    font-size: 3rem;
+    margin-bottom: 3.5rem;
   }
 }
 
-.timelineContainer {
+.journeyContainer {
   position: relative;
-  max-width: 80rem;
+  max-width: 90rem;
   margin-left: auto;
   margin-right: auto;
 }
 
-.timelineLine {
-  position: absolute;
-  left: 2rem;
-  top: 0;
-  bottom: 0;
-  width: 4px;
-  background: rgb(134, 239, 172);
-  transform: translateX(-50%);
+.routeMap {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  min-height: 400px;
+  padding: 2rem 1rem;
 }
 
 @media (min-width: 768px) {
-  .timelineLine {
-    left: 50%;
-    transform: translateX(-50%);
+  .routeMap {
+    height: 450px;
+    min-height: 450px;
+    padding: 2.5rem 1.5rem;
   }
 }
 
-.timelineItems {
+.horizontalLine {
+  position: absolute;
+  left: 5%;
+  right: 5%;
+  top: 50%;
+  height: 4px;
+  background: linear-gradient(to right, 
+    rgba(165, 214, 167, 0.3) 0%,
+    #a5d6a7 10%,
+    #a5d6a7 90%,
+    rgba(165, 214, 167, 0.3) 100%);
+  transform: translateY(-50%);
+  z-index: 2;
+  box-shadow: 
+    0 0 10px rgba(165, 214, 167, 0.6),
+    inset 0 0 8px rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+}
+
+.routePath {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.routeLine {
+  stroke-dasharray: 4, 4;
+  animation: routeDash 20s linear infinite;
+  filter: drop-shadow(0 0 4px rgba(165, 214, 167, 0.6));
+}
+
+@keyframes routeDash {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 8;
+  }
+}
+
+.routeItems {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.routeItem {
+  position: absolute;
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  align-items: center;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  width: 0;
+  height: 0;
 }
 
-.timelineItem {
+.routeDot {
   position: relative;
-  display: flex;
-  align-items: flex-start;
-}
-
-@media (min-width: 768px) {
-  .timelineItem:nth-child(even) {
-    flex-direction: row-reverse;
-  }
-}
-
-.timelineDot {
-  position: absolute;
-  left: 2rem;
   width: 1.5rem;
   height: 1.5rem;
-  border-radius: 9999px;
-  background: rgb(134, 239, 172);
-  border: 4px solid;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  transform: translateX(-50%);
+  border-radius: 50%;
+  background: #a5d6a7;
+  border: 3px solid #4338CA;
+  box-shadow: 
+    0 0 0 3px rgba(165, 214, 167, 0.4),
+    0 4px 12px rgba(165, 214, 167, 0.6),
+    inset 0 0 10px rgba(255, 255, 255, 0.2);
   z-index: 10;
-  border-color: #4338CA;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  flex-shrink: 0;
 }
 
-@media (min-width: 768px) {
-  .timelineDot {
-    left: 50%;
-    transform: translateX(-50%);
-  }
+.routeDot:hover {
+  transform: scale(1.3);
+  box-shadow: 
+    0 0 0 6px rgba(165, 214, 167, 0.6),
+    0 8px 24px rgba(165, 214, 167, 0.8),
+    inset 0 0 18px rgba(255, 255, 255, 0.3);
 }
 
-.timelineContent {
-  width: 100%;
-  margin-left: 4rem;
-}
-
-@media (min-width: 768px) {
-  .timelineContent {
-    width: 45%;
-    margin-left: 0;
-  }
-  
-  .timelineItem:nth-child(even) .timelineContent {
-    margin-right: auto;
-    padding-right: 2rem;
-  }
-  
-  .timelineItem:nth-child(odd) .timelineContent {
-    margin-left: auto;
-    padding-left: 2rem;
-  }
-}
-
-.timelineCard {
-  padding: 1.5rem;
-  border-radius: 1.5rem;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  color: white;
+.routeDotInner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: #4338CA;
   transition: all 0.3s;
-  border: 4px solid rgba(134, 239, 172, 0.5);
-  background: #5B52D5;
 }
 
-.timelineCard:hover {
-  transform: scale(1.05);
+.routeDot:hover .routeDotInner {
+  transform: translate(-50%, -50%) scale(1.4);
 }
 
-.timelineCardHeader {
-  margin-bottom: 1rem;
+.routeCard {
+  width: 200px;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
-.timelineCardTitle {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 0.25rem;
+.routeCardTop {
+  margin-top: -135px;
 }
 
-.timelineCardCompany {
-  font-size: 1.125rem;
-  font-weight: 600;
-  opacity: 0.9;
+.routeCardBottom {
+  margin-top: 1.75rem;
 }
 
-.timelineCardLocation {
-  font-size: 0.875rem;
-  opacity: 0.75;
+.routeItem:hover .routeCard {
+  transform: translateY(-8px);
 }
 
-.timelineCardPeriod {
-  font-size: 0.875rem;
-  font-weight: 500;
-  margin-top: 0.5rem;
-  opacity: 0.9;
-}
-
-.timelineCardList {
+.routeCardContent {
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  box-shadow: 
+    0 6px 12px -4px rgba(0, 0, 0, 0.2),
+    0 0 10px rgba(165, 214, 167, 0.15);
+  color: white;
+  background: linear-gradient(135deg, #5B52D5 0%, #4338CA 100%);
+  border: 2px solid rgba(165, 214, 167, 0.5);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+  height: 120px;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  font-size: 0.875rem;
+  justify-content: space-between;
 }
 
-.timelineCardListItem {
-  display: flex;
-  align-items: flex-start;
+@media (min-width: 768px) {
+  .routeCard {
+    width: 220px;
+  }
+  
+  .routeCardTop {
+    margin-top: -145px;
+  }
+  
+  .routeCardBottom {
+    margin-top: 2rem;
+  }
+  
+  .routeCardContent {
+    height: 150px;
+    padding: 0.875rem;
+  }
 }
 
-.timelineCardListItem span:first-child {
-  margin-right: 0.5rem;
-  margin-top: 0.25rem;
+.horizontalTimelineCardContent::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(165, 214, 167, 0.1) 0%, transparent 70%);
+  animation: rotate 10s linear infinite;
+  pointer-events: none;
 }
 
-.timelineCardListItem span:last-child {
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.routeCardContent:hover {
+  transform: scale(1.05);
+  border-color: #a5d6a7;
+  box-shadow: 
+    0 12px 24px -4px rgba(0, 0, 0, 0.25),
+    0 0 18px rgba(165, 214, 167, 0.35);
+}
+
+.routeCardTitle {
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-bottom: 0.375rem;
+  color: #a5d6a7;
+  line-height: 1.2;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .routeCardTitle {
+    font-size: 0.875rem;
+  }
+}
+
+.routeCardArea {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
   opacity: 0.95;
-  line-height: 1.75;
+  color: white;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .routeCardArea {
+    font-size: 0.75rem;
+  }
+}
+
+.routeCardLocation {
+  font-size: 0.625rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  opacity: 0.8;
+  color: rgba(255, 255, 255, 0.9);
+  font-style: italic;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .routeCardLocation {
+    font-size: 0.6875rem;
+  }
+}
+
+.routeCardDates {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  margin-top: auto;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(165, 214, 167, 0.3);
+  flex-wrap: wrap;
+}
+
+.routeCardDate {
+  font-size: 0.625rem;
+  font-weight: 600;
+  color: #a5d6a7;
+  padding: 0.2rem 0.4rem;
+  background: rgba(165, 214, 167, 0.1);
+  border-radius: 0.25rem;
+  border: 1px solid rgba(165, 214, 167, 0.3);
+  white-space: nowrap;
+}
+
+@media (min-width: 768px) {
+  .routeCardDate {
+    font-size: 0.6875rem;
+    padding: 0.25rem 0.5rem;
+  }
+}
+
+.routeCardArrow {
+  font-size: 0.875rem;
+  color: #a5d6a7;
+  font-weight: 800;
+  animation: slide 2s ease-in-out infinite;
+}
+
+@keyframes slide {
+  0%, 100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(5px);
+    opacity: 0.7;
+  }
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 767px) {
+  .routeMap {
+    height: 380px;
+    min-height: 380px;
+    padding: 1.5rem 0.5rem;
+  }
+  
+  .horizontalLine {
+    left: 2%;
+    right: 2%;
+  }
+  
+  .routeCard {
+    width: 180px;
+  }
+  
+  .routeCardTop {
+    margin-top: -120px;
+  }
+  
+  .routeCardBottom {
+    margin-top: 1.25rem;
+  }
+  
+  .routeCardContent {
+    padding: 0.625rem;
+    height: 110px;
+  }
+  
+  .routeCardTitle {
+    font-size: 0.6875rem;
+  }
+  
+  .routeCardArea {
+    font-size: 0.625rem;
+  }
+  
+  .routeCardLocation {
+    font-size: 0.5625rem;
+    margin-bottom: 0.375rem;
+  }
+  
+  .routeCardDates {
+    gap: 0.25rem;
+    padding-top: 0.375rem;
+  }
+  
+  .routeCardDate {
+    font-size: 0.5625rem;
+    padding: 0.15rem 0.3rem;
+  }
+  
+  .routeCardArrow {
+    font-size: 0.75rem;
+  }
+  
+  .routeDot {
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 2px solid #4338CA;
+  }
 }
 
 /* Projects Section */
@@ -506,6 +727,7 @@
   flex: 1 1 0%;
   display: -webkit-box;
   -webkit-line-clamp: 4;
+  line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }

@@ -114,74 +114,69 @@ export default function Home() {
     }
   }, [isAutoPlaying, projects.length]);
 
-  const experiences = [
+  const journeyMilestones = [
     {
-      company: 'Spectrum Net Designs Inc',
-      role: 'Software Engineer (Front End)',
-      location: 'Grand Rapids, MI, USA',
-      period: 'Aug 2025 - Present',
-      achievements: [
-        'Optimized build performance, cutting build time by 38% through code-splitting and bundle optimization for faster deployments',
-        'Improved accessibility across 4+ client web apps by standardizing HTML/CSS, semantic markup, and WCAG, enhancing usability for 10k+ users',
-        'Reduced state-related bugs by 40% and improved onboarding speed by 25% by standardizing React apps with Hooks, Context API, and Redux',
-        'Improved lot search API speed by 30% under peak load by parallelizing GraphQL resolvers in Apollo Server and caching queries in Redis',
-        'Built dynamic admin settings for fonts, header, and tile layouts, enabling non-technical customization and cutting turnaround time by 50%',
-      ],
-      color: 'from-blue-500 to-cyan-500',
+      type: 'education',
+      title: 'Bachelors of Engineering in Electrical and Electronics',
+      area: 'Loyola ICAM',
+      location: 'Chennai, India',
+      period: 'Aug 2018 - Apr 2022',
+      startDate: 'Aug 2018',
+      endDate: 'Apr 2022',
     },
     {
-      company: 'Headstarter',
-      role: 'Software Engineering Fellow',
-      location: 'Long Island City, NY, USA',
-      period: 'Jul 2024 - Sept 2024',
-      achievements: [
-        'Built and deployed 5 projects in 5 weeks using React, Next.js, Firebase, and OpenAI using agile, MVC, and CI/CD practices',
-        'Led a team of 3 to develop AI-driven solutions with OpenAI and AWS Bedrock, and built a dynamic SaaS application',
-        'Published an open-source React form validation library with real-time synchronous and asynchronous checks, reaching 400+ downloads on npm',
-      ],
-      color: 'from-purple-500 to-pink-500',
-    },
-    {
-      company: 'Oigetit',
-      role: 'Software Quality Assurance Intern',
-      location: 'Los Gatos, CA, USA',
-      period: 'Jun 2024 - Aug 2024',
-      achievements: [
-        'Validated data and automated tests, identifying 20+ bugs weekly across frontend and backend systems, ensuring seamless releases',
-        'Collaborated with developers to troubleshoot issues related to API functionality, data integrity, and user interface performance',
-        'Analyzed test results and created detailed reports to optimize overall software quality and enhance full-stack application reliability',
-      ],
-      color: 'from-orange-500 to-red-500',
-    },
-    {
-      company: 'Calibraint Technologies',
-      role: 'Software Engineer',
+      type: 'work',
+      title: 'Software Engineer',
+      area: 'Calibraint Technologies',
       location: 'Chennai, India',
       period: 'Sept 2021 - Jun 2023',
-      achievements: [
-        'Architected and maintained scalable and high-performance web applications using React, TypeScript, Express.js, Node.js, NestJS and MongoDB',
-        'Developed scalable RESTful APIs for vendor search and analytics, integrating ElasticSearch to improve retrieval efficiency by 6.5x across 3.2B records',
-        'Designed and deployed a cost-efficient NFT metadata storage system using AWS Lambda and S3, cutting transaction overhead and saving ~$5,000/year',
-        'Automated deployment workflows with GitHub Actions, CircleCI, and Docker, achieving 20% faster release cycles and ensuring consistent staging',
-        'Optimized PostgreSQL queries and indexing on 1M+ hospital records, enabling sub-100ms access to diverse clinical data',
-        'Engineered reusable React components with Redux, cutting redundant code by 30% and streamlining cross-team development',
-        'Ensured 100% unit test coverage with Jest and Mocha reducing production bugs and enhancing overall code quality',
-        'Enhanced reporting dashboard performance and data visualization through optimized Mongo queries and efficient indexing strategies',
-      ],
-      color: 'from-green-500 to-teal-500',
+      startDate: 'Sept 2021',
+      endDate: 'Jun 2023',
     },
     {
-      company: 'Western Michigan University',
-      role: 'Graduate Teaching Assistant',
+      type: 'education',
+      title: 'Master of Science in Computer Science',
+      area: 'Western Michigan University',
+      location: '',
+      period: 'Aug 2023 - June 2025',
+      startDate: 'Aug 2023',
+      endDate: 'June 2025',
+    },
+    {
+      type: 'work',
+      title: 'Software QA Intern',
+      area: 'Oigetit',
+      location: 'Los Gatos, CA, USA',
+      period: 'Jun 2024 - Aug 2024',
+      startDate: 'Jun 2024',
+      endDate: 'Aug 2024',
+    },
+    {
+      type: 'work',
+      title: 'Software Engineering Fellow',
+      area: 'Headstarter',
+      location: 'Long Island City, NY, USA',
+      period: 'Jul 2024 - Sept 2024',
+      startDate: 'Jul 2024',
+      endDate: 'Sept 2024',
+    },
+    {
+      type: 'work',
+      title: 'Graduate Teaching Assistant',
+      area: 'Western Michigan University',
       location: 'Kalamazoo, MI, USA',
       period: 'Aug 2024 - April 2025',
-      achievements: [
-        'Boosted grading efficiency by over 50% by integrating C language test scripts into github workflows for automated testing',
-        'Facilitated 60+ C programming sessions on memory management, file I/O and UNIX IPC, reinforcing essential system-level programming skills',
-        'Mentored 50+ students in python programming, focusing on clean code practices, debugging techniques and algorithm design',
-        'Configured Docker-based environments for deploying and testing assignments on github, streamlining workflows and reducing setup issues for students',
-      ],
-      color: 'from-indigo-500 to-purple-500',
+      startDate: 'Aug 2024',
+      endDate: 'April 2025',
+    },
+    {
+      type: 'work',
+      title: 'Software Engineer',
+      area: 'Spectrum Net Designs Inc',
+      location: 'Grand Rapids, MI, USA',
+      period: 'Aug 2025 - Present',
+      startDate: 'Aug 2025',
+      endDate: 'Present',
     },
   ];
 
@@ -247,42 +242,85 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Experience Section - Timeline */}
-      <section id="experience" className={`${styles.section} ${styles.experienceSection}`}>
-        <div className={styles.timelineContainer}>
-          <h2 className={styles.experienceTitle}>Experience</h2>
-          <div className="relative">
-            {/* Timeline Line */}
-            <div className={styles.timelineLine}></div>
-
-            {/* Timeline Items */}
-            <div className={styles.timelineItems}>
-              {experiences.map((exp, index) => (
-                <div key={index} className={styles.timelineItem}>
-                  {/* Timeline Dot */}
-                  <div className={styles.timelineDot}></div>
-
-                  {/* Content Card */}
-                  <div className={styles.timelineContent}>
-                    <div className={styles.timelineCard}>
-                      <div className={styles.timelineCardHeader}>
-                        <h3 className={styles.timelineCardTitle}>{exp.role}</h3>
-                        <p className={styles.timelineCardCompany}>{exp.company}</p>
-                        <p className={styles.timelineCardLocation}>{exp.location}</p>
-                        <p className={styles.timelineCardPeriod}>{exp.period}</p>
+      {/* Journey into Tech Section - Zig-Zag Route Map */}
+      <section id="experience" className={`${styles.section} ${styles.journeySection}`}>
+        <div className={styles.journeyContainer}>
+          <h2 className={styles.journeyTitle}>Journey into Tech</h2>
+          <div className={styles.routeMap}>
+            {/* SVG Path for Curved Horizontal Route */}
+            <svg className={styles.routePath} viewBox="0 0 100 100" preserveAspectRatio="none">
+              <path
+                d={`M 5 50 
+                   ${journeyMilestones.slice(1).map((_, index) => {
+                     const total = journeyMilestones.length;
+                     const progress = (index + 1) / (total - 1);
+                     const x = 5 + (progress * 90);
+                     const prevProgress = index / (total - 1);
+                     const prevX = 5 + (prevProgress * 90);
+                     const midX = (prevX + x) / 2;
+                     const curveAmount = 3;
+                     return `Q ${midX + curveAmount} 50, ${x} 50`;
+                   }).join(' ')}`}
+                fill="none"
+                stroke="#a5d6a7"
+                strokeWidth="0.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeDasharray="3,3"
+                className={styles.routeLine}
+              />
+            </svg>
+            
+            {/* Horizontal Line Base */}
+            <div className={styles.horizontalLine}></div>
+            
+            {/* Timeline Milestones */}
+            <div className={styles.routeItems}>
+              {journeyMilestones.map((milestone, index) => {
+                const total = journeyMilestones.length;
+                const progress = index / (total - 1);
+                
+                // Single horizontal line - center position vertically
+                const y = 50;
+                
+                // Horizontal position from left to right
+                const x = 5 + (progress * 90);
+                
+                // Alternate cards top and bottom
+                const isTop = index % 2 === 0;
+                
+                return (
+                  <div 
+                    key={index} 
+                    className={styles.routeItem}
+                    style={{
+                      left: `${x}%`,
+                      top: `${y}%`,
+                    }}
+                  >
+                    {/* Timeline Dot */}
+                    <div className={styles.routeDot}>
+                      <div className={styles.routeDotInner}></div>
+                    </div>
+                    
+                    {/* Content Card */}
+                    <div className={`${styles.routeCard} ${isTop ? styles.routeCardTop : styles.routeCardBottom}`}>
+                      <div className={styles.routeCardContent}>
+                        <h3 className={styles.routeCardTitle}>{milestone.title}</h3>
+                        <p className={styles.routeCardArea}>{milestone.area}</p>
+                        {milestone.location && (
+                          <p className={styles.routeCardLocation}>{milestone.location}</p>
+                        )}
+                        <div className={styles.routeCardDates}>
+                          <span className={styles.routeCardDate}>{milestone.startDate}</span>
+                          <span className={styles.routeCardArrow}>→</span>
+                          <span className={styles.routeCardDate}>{milestone.endDate}</span>
+                        </div>
                       </div>
-                      <ul className={styles.timelineCardList}>
-                        {exp.achievements.map((achievement, i) => (
-                          <li key={i} className={styles.timelineCardListItem}>
-                            <span>●</span>
-                            <span>{achievement}</span>
-                          </li>
-                        ))}
-                      </ul>
                     </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>

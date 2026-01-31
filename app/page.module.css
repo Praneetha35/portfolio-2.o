@@ -225,30 +225,26 @@
   }
 }
 
-/* Journey into Tech Section - Zig-Zag Route Map */
 .journeySection {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
   position: relative;
   z-index: 10;
   background: #4338CA;
   overflow: hidden;
+  padding: 8rem 8.5rem;
 }
 
 .journeyTitle {
   font-size: 2.5rem;
   font-weight: 800;
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   color: #a5d6a7;
 }
 
 @media (min-width: 768px) {
   .journeyTitle {
     font-size: 3rem;
-    margin-bottom: 3.5rem;
+    margin-bottom: 2.5rem;
   }
 }
 
@@ -262,16 +258,16 @@
 .routeMap {
   position: relative;
   width: 100%;
-  height: 400px;
-  min-height: 400px;
-  padding: 2rem 1rem;
+  height: 350px;
+  min-height: 350px;
+  padding: 1.5rem 1rem;
 }
 
 @media (min-width: 768px) {
   .routeMap {
-    height: 450px;
-    min-height: 450px;
-    padding: 2.5rem 1.5rem;
+    height: 380px;
+    min-height: 380px;
+    padding: 2rem 1.5rem;
   }
 }
 
@@ -279,7 +275,7 @@
   position: absolute;
   left: 5%;
   right: 5%;
-  top: 50%;
+  top: calc(55% + px);
   height: 4px;
   background: linear-gradient(to right, 
     rgba(165, 214, 167, 0.3) 0%,
@@ -305,18 +301,8 @@
 }
 
 .routeLine {
-  stroke-dasharray: 4, 4;
-  animation: routeDash 20s linear infinite;
+  stroke-dasharray: none;
   filter: drop-shadow(0 0 4px rgba(165, 214, 167, 0.6));
-}
-
-@keyframes routeDash {
-  0% {
-    stroke-dashoffset: 0;
-  }
-  100% {
-    stroke-dashoffset: 8;
-  }
 }
 
 .routeItems {
@@ -421,7 +407,7 @@
   }
   
   .routeCardTop {
-    margin-top: -145px;
+    margin-top: -200px;
   }
   
   .routeCardBottom {
@@ -578,7 +564,7 @@
   }
   
   .routeCardBottom {
-    margin-top: 1.25rem;
+    margin-top: 1.5rem;
   }
   
   .routeCardContent {

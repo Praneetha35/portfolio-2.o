@@ -8,9 +8,9 @@ import './animations.css';
 export default function Home() {
   const [clickedBubble, setClickedBubble] = useState<number | null>(null);
   const [bubblePositions] = useState([
-    { x: 85, y: 15, delay: 0, size: 180 }, // Top right (not too corner)
-    { x: 5, y: 50, delay: 0.5, size: 200 }, // Left side
-    { x: 90, y: 85, delay: 1, size: 190 }, // Bottom right corner
+    { x: 85, y: 15, delay: 0, size: 180 }, 
+    { x: 5, y: 50, delay: 0.5, size: 200 }, 
+    { x: 90, y: 85, delay: 1, size: 190 }, 
   ]);
 
   const [currentProject, setCurrentProject] = useState(0);
@@ -80,7 +80,7 @@ export default function Home() {
     if (!isDragging) return;
     e.preventDefault();
     const x = e.pageX;
-    const walk = (x - startX) * 2; // Scroll speed multiplier
+    const walk = (x - startX) * 2; 
     setDragOffset(walk);
   };
 
@@ -88,7 +88,6 @@ export default function Home() {
     if (!isDragging) return;
     setIsDragging(false);
     
-    // Determine if we should change project based on drag distance
     const threshold = 100;
     if (Math.abs(dragOffset) > threshold) {
       if (dragOffset > 0 && currentProject > 0) {
@@ -182,14 +181,11 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
-      {/* Abstract Geometric Shapes Background - Removed criss-cross patterns */}
       <div className={styles.backgroundPatterns}>
-        {/* Simple dotted patterns only */}
         <div className={styles.dottedPattern1}></div>
         <div className={styles.dottedPattern2}></div>
       </div>
 
-      {/* Navigation - Buttons Top Right - Static */}
       <nav className={styles.nav}>
         <div className={styles.navContainer}>
           <a href="#about" className={styles.navButton}>About</a>
@@ -200,11 +196,9 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* About Me Section */}
       <section id="about" className={styles.aboutSection}>
         <div className={styles.sectionContainer}>
           <div className={styles.aboutGrid}>
-            {/* Left Section - Purple Background */}
             <div className={styles.aboutLeft}>
               <h1 className={styles.aboutTitle}>Software Engineer.</h1>
               <p className={styles.aboutDescription}>
@@ -221,7 +215,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Circular Photo at Border - Bigger */}
             <div className={styles.profileImageContainer}>
               <div className={styles.profileImage}>
                 <Image
@@ -235,22 +228,19 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right Section - Soft Green Background */}
             <div className={styles.aboutRight}>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Journey into Tech Section - Zig-Zag Route Map */}
       <section id="experience" className={`${styles.section} ${styles.journeySection}`}>
         <div className={styles.journeyContainer}>
           <h2 className={styles.journeyTitle}>Journey into Tech</h2>
           <div className={styles.routeMap}>
-            {/* SVG Path for Curved Horizontal Route */}
             <svg className={styles.routePath} viewBox="0 0 100 100" preserveAspectRatio="none">
               <path
-                d={`M 5 50 
+                d={`M 5 60 
                    ${journeyMilestones.slice(1).map((_, index) => {
                      const total = journeyMilestones.length;
                      const progress = (index + 1) / (total - 1);
@@ -259,34 +249,28 @@ export default function Home() {
                      const prevX = 5 + (prevProgress * 90);
                      const midX = (prevX + x) / 2;
                      const curveAmount = 3;
-                     return `Q ${midX + curveAmount} 50, ${x} 50`;
+                     return `Q ${midX + curveAmount} 60, ${x} 60`;
                    }).join(' ')}`}
                 fill="none"
                 stroke="#a5d6a7"
                 strokeWidth="0.8"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                strokeDasharray="3,3"
+                strokeDasharray="none"
                 className={styles.routeLine}
               />
             </svg>
             
-            {/* Horizontal Line Base */}
-            <div className={styles.horizontalLine}></div>
             
-            {/* Timeline Milestones */}
             <div className={styles.routeItems}>
               {journeyMilestones.map((milestone, index) => {
                 const total = journeyMilestones.length;
                 const progress = index / (total - 1);
                 
-                // Single horizontal line - center position vertically
-                const y = 50;
+                const y = 60;
                 
-                // Horizontal position from left to right
                 const x = 5 + (progress * 90);
                 
-                // Alternate cards top and bottom
                 const isTop = index % 2 === 0;
                 
                 return (
@@ -298,12 +282,10 @@ export default function Home() {
                       top: `${y}%`,
                     }}
                   >
-                    {/* Timeline Dot */}
                     <div className={styles.routeDot}>
                       <div className={styles.routeDotInner}></div>
                     </div>
                     
-                    {/* Content Card */}
                     <div className={`${styles.routeCard} ${isTop ? styles.routeCardTop : styles.routeCardBottom}`}>
                       <div className={styles.routeCardContent}>
                         <h3 className={styles.routeCardTitle}>{milestone.title}</h3>
@@ -326,12 +308,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Projects Section - Modern Carousel with Multiple Cards */}
       <section id="projects" className={`${styles.section} ${styles.projectsSection}`}>
         <div className={styles.sectionContainer}>
           <h2 className={styles.projectsTitle}>Projects</h2>
           
-          {/* Carousel Container with Drag Support */}
           <div 
             className={styles.carouselContainer}
             onMouseEnter={() => setIsAutoPlaying(false)}
@@ -343,12 +323,11 @@ export default function Home() {
             onMouseMove={handleMouseMove}
             onMouseUp={handleMouseUp}
           >
-            {/* Project Cards - Show 3-4 at once */}
             <div className={styles.carouselInner}>
               {projects.map((project, index) => {
                 const offset = index - currentProject;
                 const absOffset = Math.abs(offset);
-                const isVisible = absOffset <= 2; // Show up to 3 cards (current + 2 on each side)
+                const isVisible = absOffset <= 2; 
                 
                 if (!isVisible) return null;
                 
@@ -373,13 +352,8 @@ export default function Home() {
                       className={`${styles.projectCardContent} ${absOffset !== 0 ? styles.projectCardContentInactive : ''}`}
                     >
                       <div className={styles.projectCardInner}>
-                        {/* Title */}
                         <h3 className={styles.projectCardTitle}>{project.title}</h3>
-                        
-                        {/* Description */}
                         <p className={styles.projectCardDescription}>{project.description}</p>
-                        
-                        {/* Icons Row - No Text */}
                         <div className={styles.projectCardIcons}>
                           {project.github && (
                             <a
@@ -430,7 +404,6 @@ export default function Home() {
               })}
             </div>
             
-            {/* Navigation Dots */}
             <div className={styles.carouselDots}>
               {projects.map((_, index) => (
                 <button
@@ -446,7 +419,6 @@ export default function Home() {
               ))}
             </div>
             
-            {/* Navigation Arrows */}
             <button
               onClick={() => {
                 setCurrentProject((prev) => Math.max(0, prev - 1));
@@ -480,7 +452,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Memories Section */}
       <section id="memories" className={`${styles.section} ${styles.memoriesSection}`}>
         <div className={styles.memoriesContainer}>
           <h2 className={styles.memoriesTitle}>Memories & Moments</h2>
@@ -491,7 +462,6 @@ export default function Home() {
                 className={`${styles.memoryCard} ${i % 2 === 0 ? styles.memoryCardEven : styles.memoryCardOdd}`}
               >
                 <div className="w-full h-full flex items-center justify-center">
-                  {/* Photo placeholder */}
                 </div>
               </div>
             ))}
@@ -499,7 +469,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Contact Section */}
       <section id="contact" className={`${styles.section} ${styles.contactSection}`}>
         <div className={styles.sectionContainer}>
           <h2 className={styles.contactTitle}>Let's Connect</h2>
@@ -532,9 +501,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer */}
       <footer className={styles.footer}>
-        <p>© 2024 Portfolio. Built with Next.js</p>
+        <p>© 2026 Portfolio. Built by Praneetha</p>
       </footer>
     </div>
   );

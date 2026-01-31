@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import styles from './page.module.css';
+import './animations.css';
 
 export default function Home() {
   const [clickedBubble, setClickedBubble] = useState<number | null>(null);
@@ -184,81 +186,49 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen relative overflow-hidden" style={{ background: 'linear-gradient(to right, #4338CA 0%, #4338CA 66%, #a5d6a7 66%, #a5d6a7 100%)' }}>
+    <div className={styles.container}>
       {/* Abstract Geometric Shapes Background - Removed criss-cross patterns */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+      <div className={styles.backgroundPatterns}>
         {/* Simple dotted patterns only */}
-        <div className="absolute top-20 right-20 w-32 h-32 opacity-10" style={{ backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.3) 1px, transparent 1px)', backgroundSize: '8px 8px' }}></div>
-        <div className="absolute bottom-40 left-1/4 w-40 h-40 opacity-10" style={{ backgroundImage: 'radial-gradient(circle, rgba(0,0,0,0.2) 1px, transparent 1px)', backgroundSize: '10px 10px' }}></div>
+        <div className={styles.dottedPattern1}></div>
+        <div className={styles.dottedPattern2}></div>
       </div>
 
       {/* Navigation - Buttons Top Right - Static */}
-      <nav className="absolute top-0 right-0 z-50 p-4">
-        <div className="flex flex-col sm:flex-row gap-2">
-          <a 
-            href="#about" 
-            className="px-4 py-2 rounded-lg font-bold text-sm transition-all hover:scale-105 shadow-lg border-2"
-            style={{ background: '#4338CA', color: '#a5d6a7', borderColor: '#a5d6a7' }}
-          >
-            About
-          </a>
-          <a 
-            href="#experience" 
-            className="px-4 py-2 rounded-lg font-bold text-sm transition-all hover:scale-105 shadow-lg border-2"
-            style={{ background: '#4338CA', color: '#a5d6a7', borderColor: '#a5d6a7' }}
-          >
-            Experience
-          </a>
-          <a 
-            href="#projects" 
-            className="px-4 py-2 rounded-lg font-bold text-sm transition-all hover:scale-105 shadow-lg border-2"
-            style={{ background: '#4338CA', color: '#a5d6a7', borderColor: '#a5d6a7' }}
-          >
-            Projects
-          </a>
-          <a 
-            href="#memories" 
-            className="px-4 py-2 rounded-lg font-bold text-sm transition-all hover:scale-105 shadow-lg border-2"
-            style={{ background: '#4338CA', color: '#a5d6a7', borderColor: '#a5d6a7' }}
-          >
-            Memories
-          </a>
-          <a 
-            href="#contact" 
-            className="px-4 py-2 rounded-lg font-bold text-sm transition-all hover:scale-105 shadow-lg border-2"
-            style={{ background: '#4338CA', color: '#a5d6a7', borderColor: '#a5d6a7' }}
-          >
-            Contact
-          </a>
+      <nav className={styles.nav}>
+        <div className={styles.navContainer}>
+          <a href="#about" className={styles.navButton}>About</a>
+          <a href="#experience" className={styles.navButton}>Experience</a>
+          <a href="#projects" className={styles.navButton}>Projects</a>
+          <a href="#memories" className={styles.navButton}>Memories</a>
+          <a href="#contact" className={styles.navButton}>Contact</a>
         </div>
       </nav>
 
       {/* About Me Section */}
-      <section id="about" className="pt-32 px-6 md:px-12 relative z-10 w-full min-h-screen">
-        <div className="w-full max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-0 items-center relative">
+      <section id="about" className={styles.aboutSection}>
+        <div className={styles.sectionContainer}>
+          <div className={styles.aboutGrid}>
             {/* Left Section - Purple Background */}
-            <div className="md:col-span-2 space-y-8 relative" style={{ background: '#4338CA', padding: '4rem', minHeight: '600px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-              <h1 className="text-6xl md:text-8xl font-extrabold" style={{ color: '#a5d6a7' }}>
-                Software Engineer.
-              </h1>
-              <p className="text-xl text-white leading-relaxed max-w-2xl">
+            <div className={styles.aboutLeft}>
+              <h1 className={styles.aboutTitle}>Software Engineer.</h1>
+              <p className={styles.aboutDescription}>
                 I like to craft solid and scalable frontend products with great user experiences.
               </p>
-              <div className="flex items-start gap-4 mt-8">
-                <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ background: '#5B52D5' }}>
-                  <div className="w-6 h-6 border-2 border-white rounded"></div>
+              <div className={styles.aboutFeature}>
+                <div className={styles.aboutFeatureIcon}>
+                  <div className={styles.aboutFeatureIconInner}></div>
                 </div>
-                <div className="flex-1 text-white">
-                  <p className="mb-2">Highly skilled at progressive enhancement, design systems & UI Engineering.</p>
+                <div className={styles.aboutFeatureText}>
+                  <p>Highly skilled at progressive enhancement, design systems & UI Engineering.</p>
                   <p>Over a decade of experience building products for clients across several countries.</p>
                 </div>
               </div>
             </div>
 
             {/* Circular Photo at Border - Bigger */}
-            <div className="absolute transform -translate-x-1/2 -translate-y-1/2 z-20" style={{ left: '75.6667%', top: '41%' }}>
-              <div className="w-96 h-96 md:w-[400px] md:h-[400px] rounded-full overflow-hidden border-8 border-white shadow-2xl">
+            <div className={styles.profileImageContainer}>
+              <div className={styles.profileImage}>
                 <Image
                   src="/image-1.jpeg"
                   alt="Profile"
@@ -271,52 +241,41 @@ export default function Home() {
             </div>
 
             {/* Right Section - Soft Green Background */}
-            <div className="md:col-span-1 relative" style={{ background: '#a5d6a7', padding: '2rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div className={styles.aboutRight}>
             </div>
           </div>
         </div>
       </section>
 
       {/* Experience Section - Timeline */}
-      <section id="experience" className="py-20 px-6 relative z-10" style={{ background: '#4338CA' }}>
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-5xl md:text-6xl font-extrabold text-center mb-16" style={{ color: '#a5d6a7' }}>
-            Experience
-          </h2>
+      <section id="experience" className={`${styles.section} ${styles.experienceSection}`}>
+        <div className={styles.timelineContainer}>
+          <h2 className={styles.experienceTitle}>Experience</h2>
           <div className="relative">
             {/* Timeline Line */}
-            <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-1 bg-green-300 transform md:-translate-x-1/2"></div>
+            <div className={styles.timelineLine}></div>
 
             {/* Timeline Items */}
-            <div className="space-y-12">
+            <div className={styles.timelineItems}>
               {experiences.map((exp, index) => (
-                <div
-                  key={index}
-                  className={`relative flex items-start ${
-                    index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-                  }`}
-                >
+                <div key={index} className={styles.timelineItem}>
                   {/* Timeline Dot */}
-                  <div className="absolute left-8 md:left-1/2 w-6 h-6 rounded-full bg-green-300 border-4 shadow-lg transform md:-translate-x-1/2 z-10" style={{ borderColor: '#4338CA' }}></div>
+                  <div className={styles.timelineDot}></div>
 
                   {/* Content Card */}
-                  <div
-                    className={`w-full md:w-[45%] ml-16 md:ml-0 ${
-                      index % 2 === 0 ? 'md:mr-auto md:pr-8' : 'md:ml-auto md:pl-8'
-                    }`}
-                  >
-                    <div className="p-6 rounded-3xl shadow-2xl text-white hover:scale-105 transition-all border-4 border-green-300/50" style={{ background: '#5B52D5' }}>
-                      <div className="mb-4">
-                        <h3 className="text-2xl font-bold mb-1">{exp.role}</h3>
-                        <p className="text-lg font-semibold opacity-90">{exp.company}</p>
-                        <p className="text-sm opacity-75">{exp.location}</p>
-                        <p className="text-sm font-medium mt-2 opacity-90">{exp.period}</p>
+                  <div className={styles.timelineContent}>
+                    <div className={styles.timelineCard}>
+                      <div className={styles.timelineCardHeader}>
+                        <h3 className={styles.timelineCardTitle}>{exp.role}</h3>
+                        <p className={styles.timelineCardCompany}>{exp.company}</p>
+                        <p className={styles.timelineCardLocation}>{exp.location}</p>
+                        <p className={styles.timelineCardPeriod}>{exp.period}</p>
                       </div>
-                      <ul className="space-y-2 text-sm">
+                      <ul className={styles.timelineCardList}>
                         {exp.achievements.map((achievement, i) => (
-                          <li key={i} className="flex items-start">
-                            <span className="mr-2 mt-1">●</span>
-                            <span className="opacity-95 leading-relaxed">{achievement}</span>
+                          <li key={i} className={styles.timelineCardListItem}>
+                            <span>●</span>
+                            <span>{achievement}</span>
                           </li>
                         ))}
                       </ul>
@@ -330,15 +289,13 @@ export default function Home() {
       </section>
 
       {/* Projects Section - Modern Carousel with Multiple Cards */}
-      <section id="projects" className="py-20 px-6 relative z-10 overflow-hidden" style={{ background: '#a5d6a7' }}>
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-5xl md:text-6xl font-extrabold text-center mb-16" style={{ color: '#4338CA' }}>
-            Projects
-          </h2>
+      <section id="projects" className={`${styles.section} ${styles.projectsSection}`}>
+        <div className={styles.sectionContainer}>
+          <h2 className={styles.projectsTitle}>Projects</h2>
           
           {/* Carousel Container with Drag Support */}
           <div 
-            className="relative h-[500px] md:h-[600px] cursor-grab active:cursor-grabbing"
+            className={styles.carouselContainer}
             onMouseEnter={() => setIsAutoPlaying(false)}
             onMouseLeave={() => {
               setIsAutoPlaying(true);
@@ -349,7 +306,7 @@ export default function Home() {
             onMouseUp={handleMouseUp}
           >
             {/* Project Cards - Show 3-4 at once */}
-            <div className="relative w-full h-full flex items-center">
+            <div className={styles.carouselInner}>
               {projects.map((project, index) => {
                 const offset = index - currentProject;
                 const absOffset = Math.abs(offset);
@@ -360,7 +317,7 @@ export default function Home() {
                 return (
                   <div
                     key={index}
-                    className="absolute transition-all duration-500 ease-out"
+                    className={styles.projectCard}
                     style={{
                       left: `calc(50% + ${(offset * 30) + (dragOffset / 20)}%)`,
                       transform: `
@@ -371,44 +328,30 @@ export default function Home() {
                       `,
                       opacity: 1 - absOffset * 0.3,
                       zIndex: projects.length - absOffset,
-                      width: 'calc(25% - 1rem)',
-                      minWidth: '280px',
                       pointerEvents: absOffset === 0 ? 'auto' : 'none',
                     }}
                   >
                     <div 
-                      className="h-[450px] md:h-[550px] p-6 rounded-3xl shadow-2xl border-4 backdrop-blur-sm transition-all"
-                      style={{ 
-                        background: absOffset === 0
-                          ? 'linear-gradient(135deg, #4338CA 0%, #5B52D5 100%)' 
-                          : 'linear-gradient(135deg, rgba(67, 56, 202, 0.8) 0%, rgba(91, 82, 213, 0.8) 100%)',
-                        borderColor: '#a5d6a7',
-                        color: 'white',
-                      }}
+                      className={`${styles.projectCardContent} ${absOffset !== 0 ? styles.projectCardContentInactive : ''}`}
                     >
-                      <div className="h-full flex flex-col justify-between">
+                      <div className={styles.projectCardInner}>
                         {/* Title */}
-                        <h3 className="text-2xl md:text-3xl font-extrabold mb-4" style={{ color: '#a5d6a7' }}>
-                          {project.title}
-                        </h3>
+                        <h3 className={styles.projectCardTitle}>{project.title}</h3>
                         
                         {/* Description */}
-                        <p className="text-sm md:text-base leading-relaxed mb-6 flex-1 line-clamp-4">
-                          {project.description}
-                        </p>
+                        <p className={styles.projectCardDescription}>{project.description}</p>
                         
                         {/* Icons Row - No Text */}
-                        <div className="flex items-center gap-4 justify-center">
+                        <div className={styles.projectCardIcons}>
                           {project.github && (
                             <a
                               href={project.github}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="w-12 h-12 rounded-full flex items-center justify-center transition-all hover:scale-125 hover:shadow-lg"
-                              style={{ background: 'rgba(255, 255, 255, 0.15)', backdropFilter: 'blur(10px)' }}
+                              className={styles.projectCardIcon}
                               onClick={(e) => e.stopPropagation()}
                             >
-                              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" style={{ color: '#a5d6a7' }}>
+                              <svg fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                               </svg>
                             </a>
@@ -419,11 +362,10 @@ export default function Home() {
                               href={project.video}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="w-12 h-12 rounded-full flex items-center justify-center transition-all hover:scale-125 hover:shadow-lg"
-                              style={{ background: 'rgba(255, 255, 255, 0.15)', backdropFilter: 'blur(10px)' }}
+                              className={styles.projectCardIcon}
                               onClick={(e) => e.stopPropagation()}
                             >
-                              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" style={{ color: '#a5d6a7' }}>
+                              <svg fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
                               </svg>
                             </a>
@@ -434,11 +376,10 @@ export default function Home() {
                               href={project.research}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="w-12 h-12 rounded-full flex items-center justify-center transition-all hover:scale-125 hover:shadow-lg"
-                              style={{ background: 'rgba(255, 255, 255, 0.15)', backdropFilter: 'blur(10px)' }}
+                              className={styles.projectCardIcon}
                               onClick={(e) => e.stopPropagation()}
                             >
-                              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" style={{ color: '#a5d6a7' }}>
+                              <svg fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
                               </svg>
                             </a>
@@ -452,7 +393,7 @@ export default function Home() {
             </div>
             
             {/* Navigation Dots */}
-            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-3 z-30">
+            <div className={styles.carouselDots}>
               {projects.map((_, index) => (
                 <button
                   key={index}
@@ -461,12 +402,7 @@ export default function Home() {
                     setIsAutoPlaying(false);
                     setTimeout(() => setIsAutoPlaying(true), 5000);
                   }}
-                  className={`transition-all duration-300 rounded-full ${
-                    index === currentProject ? 'w-12 h-3' : 'w-3 h-3'
-                  }`}
-                  style={{
-                    background: index === currentProject ? '#4338CA' : 'rgba(67, 56, 202, 0.4)',
-                  }}
+                  className={`${styles.carouselDot} ${index === currentProject ? styles.carouselDotActive : styles.carouselDotInactive}`}
                   aria-label={`Go to project ${index + 1}`}
                 />
               ))}
@@ -480,11 +416,10 @@ export default function Home() {
                 setTimeout(() => setIsAutoPlaying(true), 5000);
               }}
               disabled={currentProject === 0}
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 z-30 w-14 h-14 rounded-full flex items-center justify-center transition-all hover:scale-110 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
-              style={{ background: '#4338CA', color: '#a5d6a7' }}
+              className={`${styles.carouselArrow} ${styles.carouselArrowLeft}`}
               aria-label="Previous project"
             >
-              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
             </button>
@@ -496,11 +431,10 @@ export default function Home() {
                 setTimeout(() => setIsAutoPlaying(true), 5000);
               }}
               disabled={currentProject === projects.length - 1}
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 z-30 w-14 h-14 rounded-full flex items-center justify-center transition-all hover:scale-110 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
-              style={{ background: '#4338CA', color: '#a5d6a7' }}
+              className={`${styles.carouselArrow} ${styles.carouselArrowRight}`}
               aria-label="Next project"
             >
-              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </button>
@@ -509,20 +443,14 @@ export default function Home() {
       </section>
 
       {/* Memories Section */}
-      <section id="memories" className="py-20 px-6 relative z-10" style={{ background: '#4338CA' }}>
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-5xl md:text-6xl font-extrabold text-center mb-16" style={{ color: '#a5d6a7' }}>
-            Memories & Moments
-          </h2>
-          <div className="grid md:grid-cols-4 gap-6">
+      <section id="memories" className={`${styles.section} ${styles.memoriesSection}`}>
+        <div className={styles.memoriesContainer}>
+          <h2 className={styles.memoriesTitle}>Memories & Moments</h2>
+          <div className={styles.memoriesGrid}>
             {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
               <div
                 key={i}
-                className="aspect-square rounded-3xl overflow-hidden shadow-2xl hover:scale-110 transition-all cursor-pointer border-4"
-                style={{
-                  background: i % 2 === 0 ? '#a5d6a7' : '#5B52D5',
-                  borderColor: i % 2 === 0 ? '#4338CA' : '#a5d6a7',
-                }}
+                className={`${styles.memoryCard} ${i % 2 === 0 ? styles.memoryCardEven : styles.memoryCardOdd}`}
               >
                 <div className="w-full h-full flex items-center justify-center">
                   {/* Photo placeholder */}
@@ -534,128 +462,42 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 px-6 relative z-10" style={{ background: '#a5d6a7' }}>
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-5xl md:text-6xl font-extrabold mb-16" style={{ color: '#4338CA' }}>
-            Let's Connect
-          </h2>
-          <div className="flex justify-center space-x-8">
+      <section id="contact" className={`${styles.section} ${styles.contactSection}`}>
+        <div className={styles.sectionContainer}>
+          <h2 className={styles.contactTitle}>Let's Connect</h2>
+          <div className={styles.contactLinks}>
             <a
               href="https://linkedin.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex flex-col items-center p-6 rounded-3xl shadow-2xl hover:scale-110 transition-all border-4"
-              style={{ background: '#4338CA', color: '#a5d6a7', borderColor: '#4338CA' }}
+              className={styles.contactLink}
             >
-              <span className="font-extrabold text-lg">LinkedIn</span>
+              <span className={styles.contactLinkText}>LinkedIn</span>
             </a>
             <a
               href="https://github.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex flex-col items-center p-6 rounded-3xl shadow-2xl hover:scale-110 transition-all border-4"
-              style={{ background: '#4338CA', color: '#a5d6a7', borderColor: '#4338CA' }}
+              className={styles.contactLink}
             >
-              <span className="font-extrabold text-lg">GitHub</span>
+              <span className={styles.contactLinkText}>GitHub</span>
             </a>
             <a
               href="https://youtube.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex flex-col items-center p-6 rounded-3xl shadow-2xl hover:scale-110 transition-all border-4"
-              style={{ background: '#4338CA', color: '#a5d6a7', borderColor: '#4338CA' }}
+              className={styles.contactLink}
             >
-              <span className="font-extrabold text-lg">YouTube</span>
+              <span className={styles.contactLinkText}>YouTube</span>
             </a>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-8 px-6 text-center relative z-10" style={{ background: '#4338CA', color: '#a5d6a7' }}>
+      <footer className={styles.footer}>
         <p>© 2024 Portfolio. Built with Next.js</p>
       </footer>
-
-      <style jsx>{`
-        @keyframes float {
-          0%, 100% {
-            transform: translate(-50%, -50%) translateY(0px) rotate(0deg);
-          }
-          25% {
-            transform: translate(-50%, -50%) translateY(-25px) rotate(5deg);
-          }
-          50% {
-            transform: translate(-50%, -50%) translateY(-30px) rotate(0deg);
-          }
-          75% {
-            transform: translate(-50%, -50%) translateY(-25px) rotate(-5deg);
-          }
-        }
-        @keyframes float-slow {
-          0%, 100% {
-            transform: translateY(0px) translateX(0px) scale(1);
-          }
-          33% {
-            transform: translateY(-25px) translateX(15px) scale(1.05);
-          }
-          66% {
-            transform: translateY(-35px) translateX(-10px) scale(0.95);
-          }
-        }
-        @keyframes float-medium {
-          0%, 100% {
-            transform: translateY(0px) translateX(0px) scale(1);
-          }
-          33% {
-            transform: translateY(-30px) translateX(-20px) scale(1.08);
-          }
-          66% {
-            transform: translateY(-45px) translateX(15px) scale(0.92);
-          }
-        }
-        @keyframes float-fast {
-          0%, 100% {
-            transform: translateY(0px) translateX(0px) scale(1);
-          }
-          33% {
-            transform: translateY(-40px) translateX(25px) scale(1.1);
-          }
-          66% {
-            transform: translateY(-55px) translateX(-15px) scale(0.9);
-          }
-        }
-        .cloud {
-          border-radius: 50px;
-        }
-        .cloud::before,
-        .cloud::after {
-          content: '';
-          position: absolute;
-          background: inherit;
-          border-radius: 50px;
-        }
-        .cloud::before {
-          width: 50px;
-          height: 50px;
-          top: -25px;
-          left: 10px;
-        }
-        .cloud::after {
-          width: 60px;
-          height: 60px;
-          top: -30px;
-          right: 10px;
-        }
-        .animate-float-slow {
-          animation: float-slow 9s ease-in-out infinite;
-        }
-        .animate-float-medium {
-          animation: float-medium 7s ease-in-out infinite;
-        }
-        .animate-float-fast {
-          animation: float-fast 11s ease-in-out infinite;
-        }
-      `}</style>
     </div>
   );
 }

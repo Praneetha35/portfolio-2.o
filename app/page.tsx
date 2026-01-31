@@ -51,7 +51,7 @@ export default function Home() {
     },
     {
       title: 'Medication Verification System',
-      description:'Medicine Verification System uses YOLOv11m for accurate real-time detection and classification of medication vials, improving safety and reducing human error. A robust pipeline featuring YOLOv8 for data collection and Roboflow for annotation, ensures high performance on small-object detection in real-world settings.',
+      description:'Medicine Verification System uses YOLOv11m for real-time vial detection, with a YOLOv8 + Roboflow pipeline enabling reliable small-object detection in real-world settings.',
       github: 'https://github.com/username/project5',
       video: 'https://youtube.com/watch?v=example5',
       research: null,

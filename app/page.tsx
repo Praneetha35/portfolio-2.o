@@ -13,7 +13,63 @@ export default function Home() {
     { x: 90, y: 85, delay: 1, size: 190 }, 
   ]);
 
-  const [currentProject, setCurrentProject] = useState(0);
+  const projects = [
+    {
+      title: 'AI-Powered Analytics Platform',
+      description: 'A full-stack web application built with Next.js and modern technologies. Features include real-time updates, machine learning predictions, and responsive design.',
+      github: 'https://github.com/username/project1',
+      video: 'https://youtube.com/watch?v=example1',
+      research: null,
+      image: '/images/market-research-tool.jpg',
+      skills: ['Next.js', 'React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Machine Learning'],
+    },
+    {
+      title: 'Mobile Health Tracker',
+      description: 'An innovative mobile app solution that solves real-world health problems. Built with React Native and integrated with cloud services for seamless data sync.',
+      github: 'https://github.com/username/project2',
+      video: null,
+      research: 'https://arxiv.org/abs/example2',
+      image: '/images/health-hive.png',
+      skills: ['React Native', 'TypeScript', 'Firebase', 'Cloud Services', 'Mobile Development'],
+    },
+    {
+      title: 'Microservices API Gateway',
+      description: 'A powerful API platform with microservices architecture. Handles millions of requests with high performance and reliability, featuring auto-scaling and load balancing.',
+      github: 'https://github.com/username/project3',
+      video: 'https://youtube.com/watch?v=example3',
+      research: null,
+      image: '/images/secure-sign.png',
+      skills: ['Microservices', 'API Gateway', 'Docker', 'Kubernetes', 'Load Balancing', 'Auto-scaling'],
+    },
+    {
+      title: "What's in my fridge?",
+      description: "What's in My Fridge? is an AI-powered app that analyzes food photos to detect spoilage and estimate shelf life, helping users reduce waste and make smarter food choices.",
+      video: 'https://www.youtube.com/watch?v=_NHohmufBJA',
+      github: 'https://github.com/Praneetha35/whats-in-my-fridge',
+      image: '/images/fridge.png',
+      skills: ['Python', 'TypeScript', 'Next.js', 'Flask', 'MongoDB', 'OpenAI'],
+    },
+    {
+      title: 'Medication Verification System',
+      description:'Medicine Verification System uses YOLOv11m for accurate real-time detection and classification of medication vials, improving safety and reducing human error. A robust pipeline featuring YOLOv8 for data collection and Roboflow for annotation, ensures high performance on small-object detection in real-world settings.',
+      github: 'https://github.com/username/project5',
+      video: 'https://youtube.com/watch?v=example5',
+      research: null,
+      image: '/images/vial.png',
+      skills: ['Python', 'YOLOv11', 'YOLOv8', 'Computer Vision', 'Roboflow', 'Deep Learning'],
+    },
+    {
+      title: 'Machine Learning Model Hub',
+      description: 'A platform for sharing and deploying machine learning models. Features model versioning, A/B testing, and automated deployment pipelines.',
+      github: 'https://github.com/username/project6',
+      video: null,
+      research: 'https://arxiv.org/abs/example6',
+      image: '/images/fin-bert.png',
+      skills: ['Python', 'Machine Learning', 'MLOps', 'Docker', 'Kubernetes', 'A/B Testing'],
+    },
+  ];
+
+  const [currentProject, setCurrentProject] = useState(Math.floor(projects.length / 2));
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
@@ -24,51 +80,6 @@ export default function Home() {
     setClickedBubble(index);
     setTimeout(() => setClickedBubble(null), 2000);
   };
-
-  const projects = [
-    {
-      title: 'AI-Powered Analytics Platform',
-      description: 'A full-stack web application built with Next.js and modern technologies. Features include real-time updates, machine learning predictions, and responsive design.',
-      github: 'https://github.com/username/project1',
-      video: 'https://youtube.com/watch?v=example1',
-      research: null,
-    },
-    {
-      title: 'Mobile Health Tracker',
-      description: 'An innovative mobile app solution that solves real-world health problems. Built with React Native and integrated with cloud services for seamless data sync.',
-      github: 'https://github.com/username/project2',
-      video: null,
-      research: 'https://arxiv.org/abs/example2',
-    },
-    {
-      title: 'Microservices API Gateway',
-      description: 'A powerful API platform with microservices architecture. Handles millions of requests with high performance and reliability, featuring auto-scaling and load balancing.',
-      github: 'https://github.com/username/project3',
-      video: 'https://youtube.com/watch?v=example3',
-      research: null,
-    },
-    {
-      title: 'Blockchain Voting System',
-      description: 'Secure and transparent voting system using blockchain technology. Ensures immutability and verifiability of votes with smart contracts.',
-      github: null,
-      video: 'https://youtube.com/watch?v=example4',
-      research: 'https://arxiv.org/abs/example4',
-    },
-    {
-      title: 'Real-Time Collaboration Tool',
-      description: 'A collaborative workspace platform with real-time synchronization. Built with WebSockets and modern web technologies for seamless team collaboration.',
-      github: 'https://github.com/username/project5',
-      video: 'https://youtube.com/watch?v=example5',
-      research: null,
-    },
-    {
-      title: 'Machine Learning Model Hub',
-      description: 'A platform for sharing and deploying machine learning models. Features model versioning, A/B testing, and automated deployment pipelines.',
-      github: 'https://github.com/username/project6',
-      video: null,
-      research: 'https://arxiv.org/abs/example6',
-    },
-  ];
 
   const handleMouseDown = (e: React.MouseEvent) => {
     setIsDragging(true);
@@ -202,8 +213,7 @@ export default function Home() {
             <div className={styles.aboutLeft}>
               <h1 className={styles.aboutTitle}>Software Engineer.</h1>
               <p className={styles.aboutDescription}>
-                I like to craft solid and scalable frontend products with great user experiences.
-              </p>
+              Just love building software that makes people’s lives simple              </p>
               <div className={styles.aboutFeature}>
                 <div className={styles.aboutFeatureIcon}>
                   <div className={styles.aboutFeatureIconInner}></div>
@@ -336,7 +346,7 @@ export default function Home() {
                     key={index}
                     className={styles.projectCard}
                     style={{
-                      left: `calc(50% + ${(offset * 30) + (dragOffset / 20)}%)`,
+                      left: `calc(50% + ${(offset * 35) + (dragOffset / 20)}%)`,
                       transform: `
                         translateX(-50%) 
                         translateY(${absOffset * 20}px)
@@ -352,8 +362,40 @@ export default function Home() {
                       className={`${styles.projectCardContent} ${absOffset !== 0 ? styles.projectCardContentInactive : ''}`}
                     >
                       <div className={styles.projectCardInner}>
+                        <div className={styles.projectCardImageSection}>
+                          <div className={styles.projectCardImage}>
+                            {project.image ? (
+                              <img
+                                src={project.image}
+                                alt={project.title}
+                                className={styles.projectImage}
+                              />
+                            ) : (
+                              <div className={styles.projectImagePlaceholder}>
+                                <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                                  <circle cx="8.5" cy="8.5" r="1.5"/>
+                                  <polyline points="21 15 16 10 5 21"/>
+                                </svg>
+                              </div>
+                            )}
+                          </div>
+                        </div>
                         <h3 className={styles.projectCardTitle}>{project.title}</h3>
-                        <p className={styles.projectCardDescription}>{project.description}</p>
+                        <div className={styles.projectCardDescriptionSection}>
+                          <p className={styles.projectCardDescription}>{project.description}</p>
+                        </div>
+                        {project.skills && (
+                          <div className={styles.projectSkillsSection}>
+                            <div className={styles.projectSkills}>
+                              {project.skills.map((skill, skillIndex) => (
+                                <span key={skillIndex} className={styles.skillTag}>
+                                  {skill}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                        )}
                         <div className={styles.projectCardIcons}>
                           {project.github && (
                             <a

@@ -25,7 +25,7 @@ export default function Home() {
       video: null,
       research: null,
       image: '/images/nft-image.jpg',
-      skills: ['React','Nest.js','MongoDB','OpenZepplin','Solidity','IPFS','jquery']
+      skills: ['React', 'Nest.js', 'MongoDB', 'OpenZepplin', 'Solidity', 'IPFS', 'jquery']
     },
     {
       title: 'SkyWatch',
@@ -34,7 +34,7 @@ export default function Home() {
       video: null,
       research: null,
       image: '/images/weather-app-image.png',
-      skills: ['React', 'JavaScript', 'HTML','CSS'],
+      skills: ['React', 'JavaScript', 'HTML', 'CSS'],
     },
     {
       title: 'My Digital Showcase',
@@ -42,8 +42,8 @@ export default function Home() {
       github: 'https://github.com/Praneetha35/my-digital-showcase',
       video: null,
       research: null,
-      image: '/images/portfolio.jpeg',
-      skills: ['React','Next.js','Tailwind CSS']
+      image: '/images/portfolio-old.jpeg',
+      skills: ['React', 'Next.js', 'Tailwind CSS']
     },
     {
       title: "What's in my fridge?",
@@ -56,19 +56,61 @@ export default function Home() {
     {
       title: 'Medication Verification System',
       description: 'Medicine Verification System uses YOLOv11m for real-time vial detection, with a YOLOv8 + Roboflow pipeline enabling reliable small-object detection in real-world settings.',
-      github: 'https://github.com/username/project5',
-      video: 'https://youtube.com/watch?v=example5',
+      github: 'https://github.com/Praneetha35/medication-verification-system',
+      video: null,
       research: null,
       image: '/images/vial.png',
-      skills: ['Python', 'YOLOv11', 'YOLOv8', 'Computer Vision', 'Roboflow', 'Deep Learning'],
+      skills: ['Python', 'YOLOv11', 'YOLOv8', 'Computer Vision', 'Roboflow'],
+    },
+    {
+      title: 'Mindcraft',
+      description: 'MindCraft is an AI-powered flashcard tool that helps students and lifelong learners effortlessly generate and organize study material. With smart flashcard creation and intuitive organization, MindCraft simplifies complex topics into digestible insights—now with seamless payment support for premium features via secure Stripe integration.',
+      github: 'https://github.com/Praneetha35/mindcraft',
+      video: null,
+      image: '/images/mindcraft.png',
+      skills: ['Next.js', 'TypeScript', 'Stripe', 'OpenAI', 'Material UI', 'Firebase'],
+    },
+    {
+      title: 'Med Assist',
+      description: 'Med Assist is a focused emergency chatbot that delivers trusted, real-time guidance in a calm and reassuring tone. Designed solely to support users during stressful situations, it avoids distractions and speaks with clarity, empathy, and purpose',
+      github: 'https://github.com/Praneetha35/med-assist',
+      video: null,
+      image: '/images/med-assist.png',
+      skills: ['Next.js', 'TypeScript', 'OpenAI', 'Material UI', 'Firebase'],
     },
     {
       title: 'Health Hive',
-      description: 'HealthHive is a social wellness app that connects users with health partners to set goals, track progress, and stay motivated. Featuring BeeFriend AI for personalized support and a gamified tree-growing system, it makes health journeys fun, accountable, and engaging.',
+      description: 'A social wellness app that connects users with health partners to set goals & track progress. Featuring BeeFriend AI for personalized support & a gamified tree-growing system, it makes health journeys fun, accountable & engaging.',
       github: 'https://github.com/Praneetha35/health-hive',
       video: null,
       image: '/images/health-hive.png',
-      skills: ['TypeScript','Next.js','MongoDB Atlas','Groq SDK','llama3','Material-UI'],
+      skills: ['TypeScript', 'Next.js', 'MongoDB Atlas', 'Groq SDK', 'llama3', 'Material-UI'],
+    },
+    {
+      title: "What's in my fridge?",
+      description: "What's in My Fridge? is an AI-powered app that analyzes food photos to detect spoilage and estimate shelf life, helping users reduce waste and make smarter food choices.",
+      video: 'https://www.youtube.com/watch?v=_NHohmufBJA',
+      github: 'https://github.com/Praneetha35/whats-in-my-fridge',
+      image: '/images/fridge.png',
+      skills: ['Python', 'TypeScript', 'Next.js', 'Flask', 'MongoDB', 'OpenAI'],
+    },
+
+    {
+      title: 'Pantry Pal',
+      description: 'PantryPal is a Next.js app that uses GPT-4o and Firebase to track pantry items, auto-add groceries via image recognition, and suggest recipes based on available ingredients',
+      github: 'https://github.com/Praneetha35/pantry-pal.png',
+      video: null,
+      image: '/images/pantry-pal.png',
+      skills: ['Next.js', 'Firebase', 'JavaScript', 'OpenAI', 'Material UI', 'Vercel'],
+    },
+    {
+      title: 'npm-form-checker',
+      description: 'form-checker is an easy-to-use form validation library that supports both synchronous and asynchronous validations, designed for seamless integration with React',
+      github: 'https://github.com/Praneetha35/npm-form-checker',
+      video: null,
+      research: 'https://www.npmjs.com/package/@validation-lib/form-checker',
+      image: '/images/npm.jpeg',
+      skills: ['React', 'npm-package', 'Node JS'],
     },
     {
       title: 'Flight Delay Prediction and Analysis',
@@ -79,27 +121,35 @@ export default function Home() {
       skills: ['R', 'dplyr', 'ggplot2', 'caret', 'pROC', 'corrplot']
     }, {
       title: 'Credit Card Fraud Detection',
-      description: '',
+      description: 'This project uses the k-Nearest Neighbors (k-NN) algorithm to detect fraudulent credit card transactions. It works with a high-dimensional, imbalanced dataset and focuses on accurately identifying fraud while reducing both false positives and false negatives',
       github: 'https://github.com/Praneetha35/credit_card_fraud_detection_in_transaction_data_using_KNN',
       video: null,
-      research: 'https://arxiv.org/abs/example6',
+      research: null,
       image: '/images/fin-bert.png',
       skills: ['Python', 'scikit-learn', 'pandas', 'NumPy', 'matplotlib', 'seaborn'],
-    }, {
-      title: 'Mindcraft',
-      description: 'MindCraft is an AI-powered flashcard tool that helps students and lifelong learners effortlessly generate and organize study material. With smart flashcard creation and intuitive organization, MindCraft simplifies complex topics into digestible insights—now with seamless payment support for premium features via secure Stripe integration.',
-      github: 'https://github.com/username/project6',
-      video: null,
-      image: '/images/mindcraft.png',
-      skills: ['Next.js', 'TypeScript', 'Stripe', 'OpenAI', 'Material UI', 'Firebase'],
     },
-     {
-      title: 'Mindcraft',
-      description: 'MindCraft is an AI-powered flashcard tool that helps students and lifelong learners effortlessly generate and organize study material. With smart flashcard creation and intuitive organization, MindCraft simplifies complex topics into digestible insights—now with seamless payment support for premium features via secure Stripe integration.',
-      github: 'https://github.com/username/project6',
+    {
+      title: 'Market Research Analysis Tool',
+      description: 'Contributed to a Market Research Analysis tool streamlines federal acquisition decision-making by leveraging technology for market research, vendor identification, and small business goal fulfillment',
+      github: 'https://github.com/Praneetha35/med-assist',
       video: null,
-      image: '/images/mindcraft.png',
-      skills: ['Next.js', 'TypeScript', 'Stripe', 'OpenAI', 'Material UI', 'Firebase'],
+      image: '/images/market-research.jpeg',
+      skills: ['React', 'Node.js', 'Express.js', 'MongoDB', 'Elasticsearch', 'Bootstrap'],
+    },
+    {
+      title: 'BidVerse',
+      description: 'BidVerse is a Polygon based web3 platform revolutionizing hiring: seamlessly connecting companies with deserving candidates',
+      github: 'https://github.com/Praneetha35/BidVerse',
+      video: null,
+      image: '/images/bidverse.jpg',
+      skills: ['React', 'Arweave', 'OpenZepplin', 'Solidity'],
+    },
+    {
+      title: "PixelPython",
+      description: "PixelPython is a classic snake game using Pygame library",
+      github: 'https://github.com/Praneetha35/pixel-python',
+      image: '/images/snake-game.jpg',
+      skills: ['Python', 'PyGame'],
     },
   ];
 

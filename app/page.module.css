@@ -864,7 +864,7 @@ z-index: 1;
 
 .carouselDots {
   position: absolute;
-  bottom: 2rem;
+  bottom: -2rem;
   left: 50%;
   transform: translateX(-50%);
   display: flex;

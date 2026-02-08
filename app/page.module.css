@@ -1,12 +1,16 @@
-/* Main Container */
 .container {
   min-height: 100vh;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(to right, #4338CA 0%, #4338CA 66%, #a5d6a7 66%, #a5d6a7 100%);
+  background: linear-gradient(to right, #4338CA 0%, #4338CA 50%, #a5d6a7 50%, #a5d6a7 100%);
 }
 
-/* Background Patterns */
+@media (min-width: 768px) {
+  .container {
+    background: linear-gradient(to right, #4338CA 0%, #4338CA 66%, #a5d6a7 66%, #a5d6a7 100%);
+  }
+}
+
 .backgroundPatterns {
   position: fixed;
   inset: 0;
@@ -22,7 +26,7 @@
   width: 8rem;
   height: 8rem;
   opacity: 0.1;
-  background-image: radial-gradient(circle, rgba(255,255,255,0.3) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.3) 1px, transparent 1px);
   background-size: 8px 8px;
 }
 
@@ -33,42 +37,70 @@
   width: 10rem;
   height: 10rem;
   opacity: 0.1;
-  background-image: radial-gradient(circle, rgba(0,0,0,0.2) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.2) 1px, transparent 1px);
   background-size: 10px 10px;
 }
 
-/* Navigation */
 .nav {
-  position: absolute;
+  position: fixed;
   top: 0;
+  left: 0;
   right: 0;
   z-index: 50;
-  padding: 1rem;
+  padding: 0.75rem 1rem;
+  background: rgba(67, 56, 202, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid rgba(165, 214, 167, 0.3);
+}
+
+@media (min-width: 768px) {
+  .nav {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: auto;
+    background: transparent;
+    backdrop-filter: none;
+    border-bottom: none;
+    padding: 1rem;
+  }
 }
 
 .navContainer {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 0.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 768px) {
   .navContainer {
-    flex-direction: row;
+    justify-content: flex-end;
+    flex-wrap: nowrap;
   }
 }
 
 .navButton {
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0.75rem;
   border-radius: 0.5rem;
   font-weight: 700;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   transition: all 0.3s;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   border: 2px solid;
-  background: #4338CA;
+  background: rgba(67, 56, 202, 0.8);
   color: #a5d6a7;
   border-color: #a5d6a7;
+  white-space: nowrap;
+}
+
+@media (min-width: 768px) {
+  .navButton {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    background: #4338CA;
+  }
 }
 
 .navButton:hover {
@@ -82,9 +114,10 @@
 }
 
 .aboutSection {
-  padding-top: 8rem;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  padding-top: 5rem;
+  padding-left: 0;
+  padding-right: 1rem;
+  padding-bottom: 2rem;
   position: relative;
   z-index: 10;
   width: 100%;
@@ -93,8 +126,10 @@
 
 @media (min-width: 768px) {
   .aboutSection {
+    padding-top: 8rem;
     padding-left: 3rem;
     padding-right: 3rem;
+    padding-bottom: 0;
   }
 }
 
@@ -106,7 +141,8 @@
 }
 
 .aboutGrid {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 0;
   align-items: center;
   position: relative;
@@ -114,43 +150,79 @@
 
 @media (min-width: 768px) {
   .aboutGrid {
+    display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0;
+    align-items: stretch;
   }
 }
 
 .aboutLeft {
   background: #4338CA;
-  padding: 4rem;
-  min-height: 600px;
+  padding: 2rem;
+  min-height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   position: relative;
+  width: 100%;
+  order: 2;
+}
+
+@media (min-width: 640px) {
+  .aboutLeft {
+    padding: 3rem;
+    min-height: 400px;
+  }
 }
 
 @media (min-width: 768px) {
   .aboutLeft {
     grid-column: span 2 / span 2;
+    padding: 4rem;
+    min-height: 600px;
+    order: unset;
+    width: unset;
   }
 }
 
 .aboutTitle {
-  font-size: 3.75rem;
+  font-size: 2.5rem;
   font-weight: 800;
   color: #a5d6a7;
+  line-height: 1.1;
+}
+
+@media (min-width: 640px) {
+  .aboutTitle {
+    font-size: 3.5rem;
+  }
 }
 
 @media (min-width: 768px) {
   .aboutTitle {
     font-size: 5rem;
+    line-height: 1;
   }
 }
 
 .aboutDescription {
-  font-size: 1.25rem;
+  font-size: 1rem;
   color: white;
   line-height: 1.75;
   max-width: 42rem;
+}
+
+@media (min-width: 640px) {
+  .aboutDescription {
+    font-size: 1.125rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .aboutDescription {
+    font-size: 1.25rem;
+  }
 }
 
 .aboutFeature {
@@ -187,27 +259,58 @@
 }
 
 .profileImageContainer {
-  position: absolute;
-  transform: translate(-50%, -50%);
+  position: relative;
   z-index: 20;
-  left: 75.6667%;
-  top: 41%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  order: 1;
+  margin-bottom: 2rem;
+  margin-top: 5rem;
+}
+
+@media (min-width: 768px) {
+  .profileImageContainer {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 75.6667%;
+    top: 41%;
+    width: auto;
+    margin-bottom: 0;
+    margin-top: 0;
+    order: unset;
+  }
 }
 
 .profileImage {
-  width: 24rem;
-  height: 24rem;
+  width: 200px;
+  height: 200px;
   border-radius: 9999px;
   overflow: hidden;
-  border: 8px solid white;
+  border: 6px solid white;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+@media (min-width: 640px) {
+  .profileImage {
+    width: 280px;
+    height: 280px;
+    border: 7px solid white;
+  }
 }
 
 @media (min-width: 768px) {
   .profileImage {
     width: 400px;
     height: 400px;
+    border: 8px solid white;
   }
+}
+
+.profileImageImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .aboutRight {
@@ -217,11 +320,17 @@
   align-items: center;
   justify-content: center;
   position: relative;
+  width: 100%;
+  min-height: 200px;
+  order: 3;
 }
 
 @media (min-width: 768px) {
   .aboutRight {
     grid-column: span 1 / span 1;
+    min-height: auto;
+    order: unset;
+    width: unset;
   }
 }
 
@@ -229,16 +338,29 @@
   position: relative;
   z-index: 10;
   background: #4338CA;
-  overflow: hidden;
-  padding: 8rem 8.5rem;
+  overflow: visible;
+  padding: 4rem 1rem;
+}
+
+@media (min-width: 768px) {
+  .journeySection {
+    overflow: hidden;
+    padding: 8rem 8.5rem;
+  }
 }
 
 .journeyTitle {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 800;
   text-align: center;
   margin-bottom: 2rem;
   color: #a5d6a7;
+}
+
+@media (min-width: 640px) {
+  .journeyTitle {
+    font-size: 2.5rem;
+  }
 }
 
 @media (min-width: 768px) {
@@ -258,9 +380,8 @@
 .routeMap {
   position: relative;
   width: 100%;
-  height: 350px;
-  min-height: 350px;
   padding: 1.5rem 1rem;
+  min-height: auto;
 }
 
 @media (min-width: 768px) {
@@ -277,27 +398,27 @@
   right: 5%;
   top: calc(55% + px);
   height: 4px;
-  background: linear-gradient(to right, 
-    rgba(165, 214, 167, 0.3) 0%,
-    #a5d6a7 10%,
-    #a5d6a7 90%,
-    rgba(165, 214, 167, 0.3) 100%);
+  background: linear-gradient(to right,
+      rgba(165, 214, 167, 0.3) 0%,
+      #a5d6a7 10%,
+      #a5d6a7 90%,
+      rgba(165, 214, 167, 0.3) 100%);
   transform: translateY(-50%);
   z-index: 2;
-  box-shadow: 
+  box-shadow:
     0 0 10px rgba(165, 214, 167, 0.6),
     inset 0 0 8px rgba(255, 255, 255, 0.1);
   border-radius: 2px;
 }
 
 .routePath {
-z-index: 1;
-    pointer-events: none;
-    width: 96%;
-    height: 100%;
-    position: absolute;
-    top: 4px;
-    left: 16px;
+  z-index: 1;
+  pointer-events: none;
+  width: 96%;
+  height: 100%;
+  position: absolute;
+  top: 4px;
+  left: 16px;
 }
 
 .routeLine {
@@ -330,7 +451,7 @@ z-index: 1;
   border-radius: 50%;
   background: #a5d6a7;
   border: 3px solid #4338CA;
-  box-shadow: 
+  box-shadow:
     0 0 0 3px rgba(165, 214, 167, 0.4),
     0 4px 12px rgba(165, 214, 167, 0.6),
     inset 0 0 10px rgba(255, 255, 255, 0.2);
@@ -342,7 +463,7 @@ z-index: 1;
 
 .routeDot:hover {
   transform: scale(1.3);
-  box-shadow: 
+  box-shadow:
     0 0 0 6px rgba(165, 214, 167, 0.6),
     0 8px 24px rgba(165, 214, 167, 0.8),
     inset 0 0 18px rgba(255, 255, 255, 0.3);
@@ -385,7 +506,7 @@ z-index: 1;
 .routeCardContent {
   padding: 0.75rem;
   border-radius: 0.5rem;
-  box-shadow: 
+  box-shadow:
     0 6px 12px -4px rgba(0, 0, 0, 0.2),
     0 0 10px rgba(165, 214, 167, 0.15);
   color: white;
@@ -405,15 +526,15 @@ z-index: 1;
   .routeCard {
     width: 220px;
   }
-  
+
   .routeCardTop {
     margin-top: -200px;
   }
-  
+
   .routeCardBottom {
     margin-top: 2rem;
   }
-  
+
   .routeCardContent {
     height: 150px;
     padding: 0.875rem;
@@ -436,6 +557,7 @@ z-index: 1;
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -444,7 +566,7 @@ z-index: 1;
 .routeCardContent:hover {
   transform: scale(1.05);
   border-color: #a5d6a7;
-  box-shadow: 
+  box-shadow:
     0 12px 24px -4px rgba(0, 0, 0, 0.25),
     0 0 18px rgba(165, 214, 167, 0.35);
 }
@@ -532,110 +654,62 @@ z-index: 1;
 }
 
 @keyframes slide {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateX(0);
     opacity: 1;
   }
+
   50% {
     transform: translateX(5px);
     opacity: 0.7;
   }
 }
 
-/* Responsive adjustments for mobile */
-@media (max-width: 767px) {
-  .routeMap {
-    height: 380px;
-    min-height: 380px;
-    padding: 1.5rem 0.5rem;
-  }
-  
-  .horizontalLine {
-    left: 2%;
-    right: 2%;
-  }
-  
-  .routeCard {
-    width: 180px;
-  }
-  
-  .routeCardTop {
-    margin-top: -120px;
-  }
-  
-  .routeCardBottom {
-    margin-top: 1.5rem;
-  }
-  
-  .routeCardContent {
-    padding: 0.625rem;
-    height: 110px;
-  }
-  
-  .routeCardTitle {
-    font-size: 0.6875rem;
-  }
-  
-  .routeCardArea {
-    font-size: 0.625rem;
-  }
-  
-  .routeCardLocation {
-    font-size: 0.5625rem;
-    margin-bottom: 0.375rem;
-  }
-  
-  .routeCardDates {
-    gap: 0.25rem;
-    padding-top: 0.375rem;
-  }
-  
-  .routeCardDate {
-    font-size: 0.5625rem;
-    padding: 0.15rem 0.3rem;
-  }
-  
-  .routeCardArrow {
-    font-size: 0.75rem;
-  }
-  
-  .routeDot {
-    width: 1.25rem;
-    height: 1.25rem;
-    border: 2px solid #4338CA;
-  }
-}
 
 /* Projects Section */
 .projectsSection {
-  padding-top: 5rem;
-  padding-bottom: 5rem;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   position: relative;
   z-index: 10;
   overflow: hidden;
   background: #a5d6a7;
 }
 
+@media (min-width: 768px) {
+  .projectsSection {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
 .projectsTitle {
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: 800;
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
   color: #4338CA;
 }
 
 @media (min-width: 768px) {
   .projectsTitle {
     font-size: 3.75rem;
+    margin-bottom: 4rem;
   }
 }
 
 .carouselContainer {
   position: relative;
-  height: 700px;
+  height: 600px;
   cursor: grab;
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
 }
 
 .carouselContainer:active {
@@ -659,23 +733,25 @@ z-index: 1;
 .projectCard {
   position: absolute;
   transition: all 0.5s ease-out;
-  width: calc(30% - 1rem);
-  min-width: 350px;
+  width: calc(85% - 1rem);
+  min-width: 280px;
+  max-width: 350px;
 }
 
 @media (min-width: 768px) {
   .projectCard {
     width: calc(35% - 1rem);
     min-width: 400px;
+    max-width: none;
   }
 }
 
 .projectCardContent {
-  height: 650px;
-  padding: 2rem;
+  height: 550px;
+  padding: 1.5rem;
   border-radius: 1.5rem;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  border: 4px solid;
+  border: 3px solid;
   backdrop-filter: blur(4px);
   transition: all 0.3s;
   background: linear-gradient(135deg, #4338CA 0%, #5B52D5 100%);
@@ -685,10 +761,18 @@ z-index: 1;
   flex-direction: column;
 }
 
+@media (min-width: 640px) {
+  .projectCardContent {
+    height: 600px;
+    padding: 1.75rem;
+    border: 4px solid;
+  }
+}
+
 @media (min-width: 768px) {
   .projectCardContent {
     height: 700px;
-    padding: 1rem;
+    padding: 2rem;
   }
 }
 
@@ -715,7 +799,7 @@ z-index: 1;
 
 .projectCardImage {
   width: 100%;
-  height: 200px;
+  height: 160px;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -723,6 +807,12 @@ z-index: 1;
   background: rgba(0, 0, 0, 0.2);
   position: relative;
   flex-shrink: 0;
+}
+
+@media (min-width: 640px) {
+  .projectCardImage {
+    height: 200px;
+  }
 }
 
 @media (min-width: 768px) {
@@ -754,13 +844,20 @@ z-index: 1;
 }
 
 .projectCardTitle {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 800;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
   margin-top: 0;
   color: #a5d6a7;
   flex-shrink: 0;
   line-height: 1.2;
+}
+
+@media (min-width: 640px) {
+  .projectCardTitle {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
 }
 
 @media (min-width: 768px) {
@@ -776,20 +873,29 @@ z-index: 1;
 }
 
 .projectCardDescription {
-  font-size: 0.875rem;
-  line-height: 1.75;
+  font-size: 0.8125rem;
+  line-height: 1.6;
   color: white;
   display: -webkit-box;
-  -webkit-line-clamp: 5;
-  line-clamp: 5;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
   margin: 0;
 }
 
+@media (min-width: 640px) {
+  .projectCardDescription {
+    font-size: 0.875rem;
+    -webkit-line-clamp: 5;
+    line-clamp: 5;
+  }
+}
+
 @media (min-width: 768px) {
   .projectCardDescription {
     font-size: 1rem;
+    line-height: 1.75;
   }
 }
 
@@ -894,8 +1000,8 @@ z-index: 1;
   top: 50%;
   transform: translateY(-50%);
   z-index: 30;
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
   border-radius: 9999px;
   display: flex;
   align-items: center;
@@ -904,6 +1010,22 @@ z-index: 1;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   background: #4338CA;
   color: #a5d6a7;
+  border: 2px solid #a5d6a7;
+}
+
+@media (min-width: 640px) {
+  .carouselArrow {
+    width: 3rem;
+    height: 3rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .carouselArrow {
+    width: 3.5rem;
+    height: 3.5rem;
+    border: none;
+  }
 }
 
 .carouselArrow:hover {
@@ -916,27 +1038,62 @@ z-index: 1;
 }
 
 .carouselArrowLeft {
-  left: 1rem;
+  left: 0.5rem;
+}
+
+@media (min-width: 640px) {
+  .carouselArrowLeft {
+    left: 1rem;
+  }
 }
 
 .carouselArrowRight {
-  right: 1rem;
+  right: 0.5rem;
+}
+
+@media (min-width: 640px) {
+  .carouselArrowRight {
+    right: 1rem;
+  }
 }
 
 .carouselArrow svg {
-  width: 2rem;
-  height: 2rem;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .carouselArrow svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .carouselArrow svg {
+    width: 2rem;
+    height: 2rem;
+  }
 }
 
 /* Memories Section */
 .memoriesSection {
-  padding-top: 5rem;
-  padding-bottom: 5rem;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   position: relative;
   z-index: 10;
   background: #4338CA;
+}
+
+@media (min-width: 768px) {
+  .memoriesSection {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
 }
 
 .memoriesContainer {
@@ -946,16 +1103,17 @@ z-index: 1;
 }
 
 .memoriesTitle {
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: 800;
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
   color: #a5d6a7;
 }
 
 @media (min-width: 768px) {
   .memoriesTitle {
     font-size: 3.75rem;
+    margin-bottom: 4rem;
   }
 }
 
@@ -965,34 +1123,73 @@ z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
+  gap: 1rem;
   margin-bottom: 2rem;
-  min-height: 400px;
+  min-height: 300px;
+}
+
+@media (min-width: 640px) {
+  .memoriesCarouselContainer {
+    gap: 1.5rem;
+    min-height: 350px;
+  }
+}
+
+@media (min-width: 768px) {
+  .memoriesCarouselContainer {
+    gap: 2rem;
+    min-height: 400px;
+  }
 }
 
 .memoriesCarousel {
   position: relative;
   width: 100%;
   max-width: 600px;
-  height: 400px;
+  height: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@media (min-width: 640px) {
+  .memoriesCarousel {
+    height: 350px;
+  }
+}
+
+@media (min-width: 768px) {
+  .memoriesCarousel {
+    height: 400px;
+  }
 }
 
 .memoryCard {
   position: absolute;
   width: 100%;
   max-width: 500px;
-  height: 350px;
+  height: 280px;
   border-radius: 1.5rem;
   overflow: hidden;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   transition: all 0.5s ease-out;
   cursor: pointer;
-  border: 4px solid #a5d6a7;
+  border: 3px solid #a5d6a7;
   display: flex;
   flex-direction: column;
+}
+
+@media (min-width: 640px) {
+  .memoryCard {
+    height: 320px;
+    border: 4px solid #a5d6a7;
+  }
+}
+
+@media (min-width: 768px) {
+  .memoryCard {
+    height: 350px;
+  }
 }
 
 .memoryCardImage {
@@ -1022,16 +1219,28 @@ z-index: 1;
 }
 
 .memoryCardTitle {
-  font-size: 1.5rem;
+  font-size: 1.125rem;
   font-weight: 800;
   color: #a5d6a7;
   margin: 0;
   text-align: center;
 }
 
+@media (min-width: 640px) {
+  .memoryCardTitle {
+    font-size: 1.25rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .memoryCardTitle {
+    font-size: 1.5rem;
+  }
+}
+
 .memoryCarouselArrow {
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
   border-radius: 9999px;
   display: flex;
   align-items: center;
@@ -1040,9 +1249,24 @@ z-index: 1;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   background: #a5d6a7;
   color: #4338CA;
-  border: none;
+  border: 2px solid #4338CA;
   cursor: pointer;
   z-index: 10;
+}
+
+@media (min-width: 640px) {
+  .memoryCarouselArrow {
+    width: 3rem;
+    height: 3rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .memoryCarouselArrow {
+    width: 3.5rem;
+    height: 3.5rem;
+    border: none;
+  }
 }
 
 .memoryCarouselArrow:hover {
@@ -1052,8 +1276,22 @@ z-index: 1;
 }
 
 .memoryCarouselArrow svg {
-  width: 2rem;
-  height: 2rem;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .memoryCarouselArrow svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .memoryCarouselArrow svg {
+    width: 2rem;
+    height: 2rem;
+  }
 }
 
 .memoryCarouselDots {
@@ -1100,7 +1338,7 @@ z-index: 1;
   max-height: 95vh;
   overflow-y: auto;
   position: relative;
-  padding: 3rem;
+  padding: 1.5rem;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
 }
 
@@ -1145,10 +1383,16 @@ z-index: 1;
 }
 
 .memoryModalTitle {
-  font-size: 3rem;
+  font-size: 1.75rem;
   font-weight: 800;
   color: #a5d6a7;
   margin-bottom: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .memoryModalTitle {
+    font-size: 2rem;
+  }
 }
 
 @media (min-width: 768px) {
@@ -1158,10 +1402,16 @@ z-index: 1;
 }
 
 .memoryModalDescription {
-  font-size: 1.25rem;
+  font-size: 0.875rem;
   line-height: 1.75;
   color: white;
   margin: 0;
+}
+
+@media (min-width: 640px) {
+  .memoryModalDescription {
+    font-size: 1rem;
+  }
 }
 
 @media (min-width: 768px) {
@@ -1247,40 +1497,33 @@ z-index: 1;
   background: #a5d6a7;
 }
 
-@media (max-width: 768px) {
-  .memoriesCarouselContainer {
-    min-height: 300px;
-  }
-
-  .memoriesCarousel {
-    max-width: 100%;
-    height: 300px;
-  }
-
-  .memoryCard {
-    height: 280px;
-  }
-
-  .memoryModalContent {
-    padding: 1.5rem;
-    margin: 1rem;
-  }
-
-  .memoryModalTitle {
-    font-size: 2rem;
-  }
-
-  .memoryModalDescription {
-    font-size: 1rem;
-  }
-
+@media (max-width: 767px) {
   .memoryModalImageWrapper {
-    gap: 1rem;
+    gap: 0.75rem;
     margin: 1.5rem 0;
+    flex-direction: column;
   }
 
   .memoryModalImageContainer {
     max-width: 100%;
+    aspect-ratio: 16 / 9;
+  }
+
+  .memoryModalImageArrow {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .memoryModalImageArrow svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 767px) {
+  .memoryModalImageWrapper {
+    flex-direction: row;
+    gap: 1rem;
   }
 
   .memoryModalImageArrow {
@@ -1296,47 +1539,95 @@ z-index: 1;
 
 /* Contact Section */
 .contactSection {
-  padding-top: 5rem;
-  padding-bottom: 5rem;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   position: relative;
   z-index: 10;
   background: #a5d6a7;
 }
 
+@media (min-width: 768px) {
+  .contactSection {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
 .contactTitle {
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: 800;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
   color: #4338CA;
   text-align: center;
+}
+
+@media (min-width: 640px) {
+  .contactTitle {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+  }
 }
 
 @media (min-width: 768px) {
   .contactTitle {
     font-size: 3.75rem;
+    margin-bottom: 4rem;
   }
 }
 
 .contactLinks {
   display: flex;
   justify-content: center;
-  gap: 2rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 640px) {
+  .contactLinks {
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .contactLinks {
+    gap: 2rem;
+    flex-wrap: nowrap;
+  }
 }
 
 .contactLink {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1.5rem;
-  border-radius: 1.5rem;
+  padding: 1rem;
+  border-radius: 1rem;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   transition: all 0.3s;
-  border: 4px solid;
+  border: 3px solid;
   background: #4338CA;
   color: #a5d6a7;
   border-color: #4338CA;
+  min-width: 100px;
+}
+
+@media (min-width: 640px) {
+  .contactLink {
+    padding: 1.25rem;
+    border-radius: 1.25rem;
+    border: 4px solid;
+  }
+}
+
+@media (min-width: 768px) {
+  .contactLink {
+    padding: 1.5rem;
+    border-radius: 1.5rem;
+    min-width: auto;
+  }
 }
 
 .contactLink:hover {
@@ -1345,10 +1636,21 @@ z-index: 1;
 
 .contactLinkText {
   font-weight: 800;
-  font-size: 1.125rem;
+  font-size: 0.875rem;
 }
 
-/* Footer */
+@media (min-width: 640px) {
+  .contactLinkText {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .contactLinkText {
+    font-size: 1.125rem;
+  }
+}
+
 .footer {
   padding-top: 2rem;
   padding-bottom: 2rem;
@@ -1361,3 +1663,104 @@ z-index: 1;
   color: #a5d6a7;
 }
 
+
+.desktopTimeline {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .desktopTimeline {
+    display: block;
+  }
+}
+
+.mobileTimeline {
+  display: block;
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .mobileTimeline {
+    display: none;
+  }
+}
+
+.mobileTimelineList {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.mobileTimelineList::before {
+  content: "";
+  position: absolute;
+  left: 0.5rem;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: rgba(165, 214, 167, 0.6);
+  border-radius: 999px;
+}
+
+.mobileTimelineItem {
+  position: relative;
+}
+
+.mobileTimelineDot {
+  position: absolute;
+  left: -0.1rem;
+  top: 1.2rem;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #a5d6a7;
+  border: 3px solid #4338CA;
+}
+
+.mobileTimelineCard {
+  margin-left: 1.25rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  background: linear-gradient(135deg, #5B52D5, #4338CA);
+  border: 2px solid rgba(165, 214, 167, 0.4);
+  color: white;
+}
+
+.mobileTimelineTitle {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #a5d6a7;
+  margin-bottom: 0.25rem;
+}
+
+.mobileTimelineArea {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.mobileTimelineLocation {
+  font-size: 0.8rem;
+  opacity: 0.85;
+  font-style: italic;
+  margin-bottom: 0.5rem;
+}
+
+.mobileTimelineDates {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  border-top: 1px solid rgba(165, 214, 167, 0.25);
+  padding-top: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.mobileTimelineDateChip {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #a5d6a7;
+  padding: 0.25rem 0.5rem;
+  background: rgba(165, 214, 167, 0.12);
+  border-radius: 0.4rem;
+}

@@ -355,8 +355,9 @@ export default function Home() {
                   alt="Profile"
                   width={400}
                   height={400}
-                  className="w-full h-full object-cover"
+                  className={styles.profileImageImg}
                   priority
+                  sizes="(max-width: 640px) 200px, (max-width: 768px) 280px, 400px"
                 />
               </div>
             </div>
@@ -370,76 +371,99 @@ export default function Home() {
       <section id="experience" className={`${styles.section} ${styles.journeySection}`}>
         <div className={styles.journeyContainer}>
           <h2 className={styles.journeyTitle}>Journey into Tech</h2>
-          <div className={styles.routeMap}>
-            <svg className={styles.routePath} viewBox="0 0 100 100" preserveAspectRatio="none">
-              <path
-                d={`M 5 60 
-                   ${journeyMilestones.slice(1).map((_, index) => {
-                  const total = journeyMilestones.length;
-                  const progress = (index + 1) / (total - 1);
-                  const x = 5 + (progress * 90);
-                  const prevProgress = index / (total - 1);
-                  const prevX = 5 + (prevProgress * 90);
-                  const midX = (prevX + x) / 2;
-                  const curveAmount = 3;
-                  return `Q ${midX + curveAmount} 60, ${x} 60`;
-                }).join(' ')}`}
-                fill="none"
-                stroke="#a5d6a7"
-                strokeWidth="0.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeDasharray="none"
-                className={styles.routeLine}
-              />
-            </svg>
 
+          <div className={styles.mobileTimeline}>
+            <div className={styles.mobileTimelineList}>
+              {journeyMilestones.map((m, idx) => (
+                <div key={idx} className={styles.mobileTimelineItem}>
+                  <div className={styles.mobileTimelineDot} />
 
-            <div className={styles.routeItems}>
-              {journeyMilestones.map((milestone, index) => {
-                const total = journeyMilestones.length;
-                const progress = index / (total - 1);
+                  <div className={styles.mobileTimelineCard}>
+                    <div className={styles.mobileTimelineTitle}>{m.title}</div>
+                    <div className={styles.mobileTimelineArea}>{m.area}</div>
 
-                const y = 60;
+                    {m.location && (
+                      <div className={styles.mobileTimelineLocation}>{m.location}</div>
+                    )}
 
-                const x = 5 + (progress * 90);
-
-                const isTop = index % 2 === 0;
-
-                return (
-                  <div
-                    key={index}
-                    className={styles.routeItem}
-                    style={{
-                      left: `${x}%`,
-                      top: `${y}%`,
-                    }}
-                  >
-                    <div className={styles.routeDot}>
-                      <div className={styles.routeDotInner}></div>
+                    <div className={styles.mobileTimelineDates}>
+                      <span className={styles.mobileTimelineDateChip}>{m.startDate}</span>
+                      <span className={styles.mobileTimelineDateChip}>{m.endDate}</span>
                     </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
 
-                    <div className={`${styles.routeCard} ${isTop ? styles.routeCardTop : styles.routeCardBottom}`}>
-                      <div className={styles.routeCardContent}>
-                        <h3 className={styles.routeCardTitle}>{milestone.title}</h3>
-                        <p className={styles.routeCardArea}>{milestone.area}</p>
-                        {milestone.location && (
-                          <p className={styles.routeCardLocation}>{milestone.location}</p>
-                        )}
-                        <div className={styles.routeCardDates}>
-                          <span className={styles.routeCardDate}>{milestone.startDate}</span>
-                          <span className={styles.routeCardArrow}>→</span>
-                          <span className={styles.routeCardDate}>{milestone.endDate}</span>
+          {/* ✅ DESKTOP ONLY: Your existing horizontal timeline (UNCHANGED) */}
+          <div className={styles.desktopTimeline}>
+            <div className={styles.routeMap}>
+              {/* KEEP EVERYTHING INSIDE THIS EXACTLY THE SAME */}
+              <svg className={styles.routePath} viewBox="0 0 100 100" preserveAspectRatio="none">
+                <path
+                  d={`M 5 60 
+              ${journeyMilestones.slice(1).map((_, index) => {
+                    const total = journeyMilestones.length;
+                    const progress = (index + 1) / (total - 1);
+                    const x = 5 + (progress * 90);
+                    const prevProgress = index / (total - 1);
+                    const prevX = 5 + (prevProgress * 90);
+                    const midX = (prevX + x) / 2;
+                    const curveAmount = 3;
+                    return `Q ${midX + curveAmount} 60, ${x} 60`;
+                  }).join(' ')}`}
+                  fill="none"
+                  stroke="#a5d6a7"
+                  strokeWidth="0.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeDasharray="none"
+                  className={styles.routeLine}
+                />
+              </svg>
+
+              <div className={styles.routeItems}>
+                {journeyMilestones.map((milestone, index) => {
+                  const total = journeyMilestones.length;
+                  const progress = index / (total - 1);
+                  const y = 60;
+                  const x = 5 + (progress * 90);
+                  const isTop = index % 2 === 0;
+
+                  return (
+                    <div
+                      key={index}
+                      className={styles.routeItem}
+                      style={{ left: `${x}%`, top: `${y}%` }}
+                    >
+                      <div className={styles.routeDot}>
+                        <div className={styles.routeDotInner}></div>
+                      </div>
+
+                      <div className={`${styles.routeCard} ${isTop ? styles.routeCardTop : styles.routeCardBottom}`}>
+                        <div className={styles.routeCardContent}>
+                          <h3 className={styles.routeCardTitle}>{milestone.title}</h3>
+                          <p className={styles.routeCardArea}>{milestone.area}</p>
+                          {milestone.location && (
+                            <p className={styles.routeCardLocation}>{milestone.location}</p>
+                          )}
+                          <div className={styles.routeCardDates}>
+                            <span className={styles.routeCardDate}>{milestone.startDate}</span>
+                            <span className={styles.routeCardArrow}>→</span>
+                            <span className={styles.routeCardDate}>{milestone.endDate}</span>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>
       </section>
+
 
       <section id="projects" className={`${styles.section} ${styles.projectsSection}`}>
         <div className={styles.sectionContainer}>

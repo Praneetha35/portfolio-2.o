@@ -1318,42 +1318,75 @@
 
 .memoryModal {
   position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(4px);
-  z-index: 1000;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(8px);
+  z-index: 99999;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  padding: 2rem;
+  padding: 1rem;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  isolation: isolate;
+}
+
+@media (min-width: 768px) {
+  .memoryModal {
+    align-items: center;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(4px);
+  }
 }
 
 .memoryModalContent {
   background: linear-gradient(135deg, #4338CA 0%, #5B52D5 100%);
-  border-radius: 1.5rem;
-  border: 4px solid #a5d6a7;
+  border-radius: 1rem;
+  border: 3px solid #a5d6a7;
   max-width: 1200px;
-  width: 95%;
-  max-height: 95vh;
+  width: 100%;
+  max-height: calc(100vh - 2rem);
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   overflow-y: auto;
   position: relative;
-  padding: 1.5rem;
+  padding: 1rem;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (min-width: 640px) {
+  .memoryModalContent {
+    padding: 1.5rem;
+    border-radius: 1.25rem;
+    border: 4px solid #a5d6a7;
+  }
 }
 
 @media (min-width: 768px) {
   .memoryModalContent {
+    width: 95%;
+    max-height: 95vh;
+    margin-top: 0;
+    margin-bottom: 0;
     padding: 4rem;
+    border-radius: 1.5rem;
   }
 }
 
 .memoryModalClose {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  width: 3rem;
-  height: 3rem;
+  position: sticky;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
   border-radius: 9999px;
   display: flex;
   align-items: center;
@@ -1364,6 +1397,20 @@
   cursor: pointer;
   transition: all 0.3s;
   z-index: 10;
+  margin-left: auto;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 640px) {
+  .memoryModalClose {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 3rem;
+    height: 3rem;
+    margin-left: 0;
+    margin-bottom: 0;
+  }
 }
 
 .memoryModalClose:hover {
@@ -1373,13 +1420,26 @@
 }
 
 .memoryModalClose svg {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .memoryModalClose svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
 }
 
 .memoryModalHeader {
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   text-align: center;
+}
+
+@media (min-width: 768px) {
+  .memoryModalHeader {
+    margin-bottom: 2rem;
+  }
 }
 
 .memoryModalTitle {
@@ -1425,21 +1485,42 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
-  margin: 2rem 0;
+  gap: 0.5rem;
+  margin: 1.5rem 0;
+}
+
+@media (min-width: 640px) {
+  .memoryModalImageWrapper {
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .memoryModalImageWrapper {
+    gap: 2rem;
+  }
 }
 
 .memoryModalImageContainer {
   flex: 1;
   max-width: 800px;
-  border-radius: 1rem;
+  border-radius: 0.75rem;
   overflow: hidden;
-  border: 4px solid #a5d6a7;
-  aspect-ratio: 4 / 3;
+  border: 3px solid #a5d6a7;
+  aspect-ratio: 16 / 9;
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@media (min-width: 640px) {
+  .memoryModalImageContainer {
+    border-radius: 1rem;
+    border: 4px solid #a5d6a7;
+    aspect-ratio: 4 / 3;
+  }
 }
 
 .memoryModalImage {
@@ -1450,18 +1531,33 @@
 }
 
 .memoryModalImageArrow {
-  width: 4rem;
-  height: 4rem;
+  width: 2.5rem;
+  height: 2.5rem;
   border-radius: 9999px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: rgba(165, 214, 167, 0.2);
-  border: 3px solid #a5d6a7;
+  border: 2px solid #a5d6a7;
   color: #a5d6a7;
   cursor: pointer;
   transition: all 0.3s;
   flex-shrink: 0;
+}
+
+@media (min-width: 640px) {
+  .memoryModalImageArrow {
+    width: 3rem;
+    height: 3rem;
+    border: 3px solid #a5d6a7;
+  }
+}
+
+@media (min-width: 768px) {
+  .memoryModalImageArrow {
+    width: 4rem;
+    height: 4rem;
+  }
 }
 
 .memoryModalImageArrow:hover {
@@ -1471,8 +1567,22 @@
 }
 
 .memoryModalImageArrow svg {
-  width: 2rem;
-  height: 2rem;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .memoryModalImageArrow svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .memoryModalImageArrow svg {
+    width: 2rem;
+    height: 2rem;
+  }
 }
 
 .memoryModalImageDots {
@@ -1497,45 +1607,6 @@
   background: #a5d6a7;
 }
 
-@media (max-width: 767px) {
-  .memoryModalImageWrapper {
-    gap: 0.75rem;
-    margin: 1.5rem 0;
-    flex-direction: column;
-  }
-
-  .memoryModalImageContainer {
-    max-width: 100%;
-    aspect-ratio: 16 / 9;
-  }
-
-  .memoryModalImageArrow {
-    width: 2.5rem;
-    height: 2.5rem;
-  }
-
-  .memoryModalImageArrow svg {
-    width: 1.25rem;
-    height: 1.25rem;
-  }
-}
-
-@media (min-width: 640px) and (max-width: 767px) {
-  .memoryModalImageWrapper {
-    flex-direction: row;
-    gap: 1rem;
-  }
-
-  .memoryModalImageArrow {
-    width: 3rem;
-    height: 3rem;
-  }
-
-  .memoryModalImageArrow svg {
-    width: 1.5rem;
-    height: 1.5rem;
-  }
-}
 
 /* Contact Section */
 .contactSection {
@@ -1800,5 +1871,56 @@
   }
   .profileImageContainer{
     margin-top: 8rem;
+  }
+}
+
+/* ✅ FIX: Memories modal getting cut / going behind other sections (mobile + desktop)
+   Put this at the BOTTOM of page.module.css (so it wins). */
+
+/* The overlay MUST be above everything */
+.memoryModal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;              /* higher than nav/footer/anything */
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  overflow: hidden;           /* prevent page bleed */
+}
+
+/* Content should scroll internally, not the page */
+.memoryModalContent {
+  position: relative;
+  width: min(1100px, 96vw);
+  max-height: 92vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ✅ MOBILE: true fullscreen modal */
+@media (max-width: 767px) {
+  .memoryModal {
+    padding: 0;               /* edge-to-edge */
+  }
+
+  .memoryModalContent {
+    width: 100vw;
+    height: 100vh;
+    max-height: 100vh;
+    border-radius: 0;         /* fullscreen look */
+    padding: 1.25rem;         /* keep your inner spacing */
+  }
+
+  /* keep close button tappable and visible */
+  .memoryModalClose {
+    position: sticky;
+    top: 0.75rem;
+    margin-left: auto;
+    z-index: 10000;
   }
 }

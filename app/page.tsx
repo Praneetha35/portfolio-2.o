@@ -334,13 +334,10 @@ export default function Home() {
         <div className={styles.sectionContainer}>
           <div className={styles.aboutGrid}>
             <div className={styles.aboutLeft}>
-              <h1 className={styles.aboutTitle}>Software Engineer.</h1>
+              <h1 className={styles.aboutTitle}>Software Engineer</h1>
               <p className={styles.aboutDescription}>
                 Just love building software that makes people’s lives simple              </p>
               <div className={styles.aboutFeature}>
-                <div className={styles.aboutFeatureIcon}>
-                  <div className={styles.aboutFeatureIconInner}></div>
-                </div>
                 <div className={styles.aboutFeatureText}>
                   <p>Highly skilled at progressive enhancement, design systems & UI Engineering.</p>
                   <p>Over a decade of experience building products for clients across several countries.</p>
@@ -800,7 +797,7 @@ export default function Home() {
 
       <section id="contact" className={`${styles.section} ${styles.contactSection}`}>
         <div className={styles.sectionContainer}>
-          <h2 className={styles.contactTitle}>Let's Connect</h2>
+          <h2 className={styles.contactTitle}>Let's Connect!!!</h2>
           <div className={styles.contactLinks}>
             <a
               href="https://linkedin.com"

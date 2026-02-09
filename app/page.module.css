@@ -1764,3 +1764,41 @@
   background: rgba(165, 214, 167, 0.12);
   border-radius: 0.4rem;
 }
+@media (max-width: 767px) {
+  .aboutLeft {
+    background: #a5d6a7;
+  }
+  .aboutRight{
+    display: none;
+  }
+
+  .aboutTitle {
+    color: #4338CA;
+  }
+
+  .aboutDescription,
+  .aboutFeatureText {
+    color: #4338CA;
+  }
+
+  .aboutFeatureIcon {
+    background: rgba(67, 56, 202, 0.15);
+  }
+
+  .aboutFeatureIconInner {
+    border-color: #4338CA;
+  }
+  .aboutSection{
+    padding: 0px;
+    min-height: 0;
+  }
+  .aboutDescription{
+    font-size: 21px;
+  }
+  .mobileTimelineList{
+    padding-left: 5px;
+  }
+  .profileImageContainer{
+    margin-top: 8rem;
+  }
+}

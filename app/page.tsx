@@ -98,7 +98,7 @@ export default function Home() {
     {
       title: 'Pantry Pal',
       description: 'PantryPal is a Next.js app that uses GPT-4o and Firebase to track pantry items, auto-add groceries via image recognition, and suggest recipes based on available ingredients',
-      github: 'https://github.com/Praneetha35/pantry-pal.png',
+      github: 'https://github.com/Praneetha35/pantry-pal.git',
       video: null,
       image: '/images/pantry-pal.png',
       skills: ['Next.js', 'Firebase', 'JavaScript', 'OpenAI', 'Material UI', 'Vercel'],

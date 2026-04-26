@@ -336,11 +336,11 @@ export default function Home() {
             <div className={styles.aboutLeft}>
               <h1 className={styles.aboutTitle}>Software Engineer</h1>
               <p className={styles.aboutDescription}>
-                Just love building software that makes people’s lives simple              </p>
+                Just love building software that makes people’s lives simple</p>
               <div className={styles.aboutFeature}>
                 <div className={styles.aboutFeatureText}>
-                  <p>Highly skilled at progressive enhancement, design systems & UI Engineering.</p>
-                  <p>Over a decade of experience building products for clients across several countries.</p>
+                  <p>Full-Stack Engineer | AI-Driven, Product-Focused</p>
+                  <p>I'm passionate about crafting digital experiences through app development and innovative tech solutions. But when I step away from the keyboard, you'll find me diving into gripping crime thrillers or exploring the culinary world.</p>
                 </div>
               </div>
             </div>
@@ -638,7 +638,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="memories" className={`${styles.section} ${styles.memoriesSection}`}>
+      {/* <section id="memories" className={`${styles.section} ${styles.memoriesSection}`}>
         <div className={styles.memoriesContainer}>
           <h2 className={styles.memoriesTitle}>Memories & Moments</h2>
 
@@ -793,7 +793,7 @@ export default function Home() {
             </div>
           </div>
         )}
-      </section>
+      </section> */}
 
       <section id="contact" className={`${styles.section} ${styles.contactSection}`}>
         <div className={styles.sectionContainer}>

@@ -2,7 +2,7 @@
   min-height: 100vh;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(to right, #4338CA 0%, #4338CA 50%, #a5d6a7 50%, #a5d6a7 100%);
+  background: #4338CA;
 }
 
 @media (min-width: 768px) {
@@ -122,6 +122,7 @@
   z-index: 10;
   width: 100%;
   min-height: 100vh;
+  background: #4338CA;
 }
 
 @media (min-width: 768px) {
@@ -130,6 +131,7 @@
     padding-left: 3rem;
     padding-right: 3rem;
     padding-bottom: 0;
+    background: transparent;
   }
 }
 
@@ -207,21 +209,23 @@
 }
 
 .aboutDescription {
-  font-size: 1rem;
+  font-family: var(--font-geist-sans), "Avenir Next", "Segoe UI", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 500;
   color: white;
-  line-height: 1.75;
+  line-height: 1.8;
   max-width: 42rem;
 }
 
 @media (min-width: 640px) {
   .aboutDescription {
-    font-size: 1.125rem;
+    font-size: 1.35rem;
   }
 }
 
 @media (min-width: 768px) {
   .aboutDescription {
-    font-size: 1.25rem;
+    font-size: 1.55rem;
   }
 }
 
@@ -251,11 +255,40 @@
 
 .aboutFeatureText {
   flex: 1 1 0%;
+  font-family: var(--font-geist-sans), "Avenir Next", "Segoe UI", sans-serif;
   color: white;
 }
 
 .aboutFeatureText p {
   margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  line-height: 1.75;
+}
+
+.aboutFeatureText p:first-child {
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+@media (min-width: 640px) {
+  .aboutFeatureText p {
+    font-size: 1.2rem;
+  }
+
+  .aboutFeatureText p:first-child {
+    font-size: 1.45rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .aboutFeatureText p {
+    font-size: 1.3rem;
+  }
+
+  .aboutFeatureText p:first-child {
+    font-size: 1.65rem;
+  }
 }
 
 .profileImageContainer {
@@ -313,24 +346,13 @@
   object-fit: cover;
 }
 
-.aboutRight {
-  background: #a5d6a7;
-  padding: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  width: 100%;
-  min-height: 200px;
-  order: 3;
-}
-
 @media (min-width: 768px) {
   .aboutRight {
     grid-column: span 1 / span 1;
     min-height: auto;
     order: unset;
     width: unset;
+    border-top: none;
   }
 }
 
@@ -1324,13 +1346,15 @@
   bottom: 0;
   width: 100vw;
   height: 100vh;
+  height: 100dvh;
   background: rgba(0, 0, 0, 0.95);
   backdrop-filter: blur(8px);
-  z-index: 99999;
+  z-index: 999999;
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding: 1rem;
+  padding: 0.5rem;
+  padding-top: 3.5rem;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
@@ -1341,6 +1365,7 @@
   .memoryModal {
     align-items: center;
     padding: 2rem;
+    padding-top: 2rem;
     background: rgba(0, 0, 0, 0.85);
     backdrop-filter: blur(4px);
   }
@@ -1352,8 +1377,9 @@
   border: 3px solid #a5d6a7;
   max-width: 1200px;
   width: 100%;
-  max-height: calc(100vh - 2rem);
-  margin-top: 1rem;
+  max-height: calc(100vh - 4rem);
+  max-height: calc(100dvh - 4rem);
+  margin-top: 0;
   margin-bottom: 1rem;
   overflow-y: auto;
   position: relative;
@@ -1615,7 +1641,7 @@
   padding-left: 1rem;
   padding-right: 1rem;
   position: relative;
-  z-index: 10;
+  z-index: 1;
   background: #a5d6a7;
 }
 
@@ -1874,14 +1900,11 @@
   }
 }
 
-/* ✅ FIX: Memories modal getting cut / going behind other sections (mobile + desktop)
-   Put this at the BOTTOM of page.module.css (so it wins). */
 
-/* The overlay MUST be above everything */
 .memoryModal {
   position: fixed;
   inset: 0;
-  z-index: 9999;              /* higher than nav/footer/anything */
+  z-index: 9999;          
   width: 100vw;
   height: 100vh;
   background: rgba(0, 0, 0, 0.82);
@@ -1890,10 +1913,9 @@
   align-items: center;
   justify-content: center;
   padding: 1rem;
-  overflow: hidden;           /* prevent page bleed */
+  overflow: hidden;          
 }
 
-/* Content should scroll internally, not the page */
 .memoryModalContent {
   position: relative;
   width: min(1100px, 96vw);
@@ -1902,21 +1924,19 @@
   -webkit-overflow-scrolling: touch;
 }
 
-/* ✅ MOBILE: true fullscreen modal */
 @media (max-width: 767px) {
   .memoryModal {
-    padding: 0;               /* edge-to-edge */
+    padding: 0;              
   }
 
   .memoryModalContent {
     width: 100vw;
-    height: 100vh;
+    height: 116vw;
     max-height: 100vh;
-    border-radius: 0;         /* fullscreen look */
-    padding: 1.25rem;         /* keep your inner spacing */
+    border-radius: 0;        
+    padding: 1.25rem;     
   }
 
-  /* keep close button tappable and visible */
   .memoryModalClose {
     position: sticky;
     top: 0.75rem;
